@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'roboto': ["Roboto Mono", monospace ],
-        'playwrite': ["Playwrite DE Grund", cursive ],
+        'roboto': ["Roboto Mono", "monospace"],
+        'playfair': ["Playfair Display", "cursive"], 
       },
       colors: {
         background: "var(--background)",
