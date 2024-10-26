@@ -56,7 +56,7 @@ const Metrics = () => {
             type="email"
             placeholder="enter your mail"
           />
-          <button className="bg-green-600 p-5 rounded-lg">Join Waitlist</button>
+          <button className="bg-primary p-5 rounded-lg">Join Waitlist</button>
         </span>
       </div>
 
@@ -70,18 +70,18 @@ const Metrics = () => {
 
           <div className="space-y-4">
             <textarea
-              className="w-full p-10 border border-x-green-600 rounded-lg "
+              className="w-full p-10 border border-x-primary rounded-lg "
               placeholder="Type in your question"
             ></textarea>
 
-            <button className="w-2/4 bg-green-600 text-white py-2 rounded-lg m-auto">
+            <button className="w-2/4 bg-primary text-white py-2 rounded-lg m-auto">
               Submit
             </button>
           </div>
         </div>
       </div>
 
-      <div className="p-5 text-green-600 text-center">
+      <div className="p-5 text-primary text-center">
         <div className="mb-5">
           <p className="font-roboto text-2xl text-black">Reach out</p>
           <p>
@@ -96,19 +96,19 @@ const Metrics = () => {
             <input
               type="text"
               placeholder="Enter your full name"
-              className="w-full p-3 border border-green-600 rounded-lg "
+              className="w-full p-3 border border-primary rounded-lg "
             />
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full p-3 border border-green-600 rounded-lg "
+              className="w-full p-3 border border-primary rounded-lg "
             />
             <textarea
-              className="h-40 w-full p-3 border border-green-600 rounded-lg  resize-none"
+              className="h-40 w-full p-3 border border-primary rounded-lg  resize-none"
               placeholder="Enter your message"
             ></textarea>
           </form>
-          <button className="mt-4 w-full bg-green-600 text-white p-3 rounded-lg">
+          <button className="mt-4 w-full bg-primary text-white p-3 rounded-lg">
             Send Mail
           </button>
         </div>

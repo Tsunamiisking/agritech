@@ -14,7 +14,7 @@ const Hero = () => {
     <>
       <div style={style}>
         <div className="absolute w-full inset-x opacity-30 h-screen bg-secondary"></div>
-        <HeroText headertext="Where Technology Meets the Future of Farming" paragraphtext="Welcome to the revolutionary world where tech meets agriculture for the better of the people, Lets help you get that fresh farm produce swift and easy."/>
+        <HeroText headertext="Where Technology Meets the Future of Farming" paragraphtext="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione architecto deserunt praesentium! Corporis labore similique necessitatibus eum debitis amet architecto, doloremque natus. Aperiam ratione consectetur eveniet deserunt tenetur eum. Libero."/>
       </div>
     </>
   );
