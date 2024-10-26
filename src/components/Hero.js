@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <>
       <div style={style}>
-        <div className="absolute w-full inset-x opacity-30 h-screen bg-secondary"></div>
+        <div className="absolute w-full inset-x opacity-20 h-screen bg-secondary"></div>
         <HeroText headertext="Where Technology Meets the Future of Farming" paragraphtext="Welcome to the revolutionary world where tech meets agriculture for the better of the people, Lets help you get that fresh farm produce swift and easy."/>
       </div>
     </>

@@ -1,10 +1,17 @@
+
 import React from "react";
 import Image from "next/image";
+import Faqs from "./Faqs";
+
+
+
 
 const Metrics = () => {
+  
+
   return (
     <div className="font-playfair ">
-      <div className="bg-green-100 text-wrap flex flex-col space-y-5 items-center lg:flex-row lg:space-x-20 p-5">
+      <div className="bg-green-100 text-wrap flex flex-col space-y-5 items-center lg:flex-row lg:space-x-20 m-5 p-5">
         <span>
           <Image src={"/agric.jpg"} width={300} height={500} alt="agric" />
         </span>
@@ -52,7 +59,7 @@ const Metrics = () => {
         </p>
         <span>
           <input
-            className="w-3/5 p-5 mr-2"
+            className="w-3/5 p-5 mr-2 rounded-lg border-4 border-green-100 lg:w-5/6"
             type="email"
             placeholder="enter your mail"
           />
@@ -60,38 +67,22 @@ const Metrics = () => {
         </span>
       </div>
 
-      <div className="p-5 max-w-xl mx-auto ">
-        <p className="text-2xl font-semibold mb-2 text-center">FAQ</p>
+      <Faqs/>
 
-        <div className="space-y-6 " >
-          <div className="bg-white p-4 ">
-            {/* You can populate FAQ items here */}
-          </div>
+      <div className="p-5 text-green-600 text-center flex flex-col lg:flex-row">
 
-          <div className="space-y-4">
-            <textarea
-              className="w-full p-10 border border-x-green-600 rounded-lg "
-              placeholder="Type in your question"
-            ></textarea>
-
-            <button className="w-2/4 bg-green-600 text-white py-2 rounded-lg m-auto">
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="p-5 text-green-600 text-center">
-        <div className="mb-5">
-          <p className="font-roboto text-2xl text-black">Reach out</p>
-          <p>
+        <div className="mb-5 lg:mr-10 justify-center items-center flex flex-col">
+          <p className="font-roboto text-2xl  text-black">Reach out</p>
+          <p className="text-wrap">
             Our platform empowers farmers to sell fresh, quality produce to
             local and global buyers, ensuring fair prices and helping them
-            thrive.Whether you're a small farmer or a consumer passionate about
-            local agriculture, join us in growing a sustainable future for all!
+            thrive.Whether you&apos;re a small farmer or a consumer passionate
+            about local agriculture, join us in growing a sustainable future for
+            all!
           </p>
         </div>
-        <div className="p-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
+
+        <div className="p-6  bg-white shadow-lg rounded-lg lg:w-3/4">
           <form className="space-y-4 w-full">
             <input
               type="text"
@@ -114,7 +105,47 @@ const Metrics = () => {
         </div>
       </div>
 
-      <footer></footer>
+      <footer>
+        <div className="bg-primary flex flex-col items-center p-10 lg:flex-row space-x-20 justify-center">
+          <div className="flex flex-col">
+            <Image
+              src={"/Images/logo-footer.png"}
+              width={250}
+              height={250}
+              alt="logo"
+            />
+            {/* <p>address: Leadcity university, Toll gate Ibadan</p> */}
+          </div>
+          <div className="lg:border-x-4 p-10 border-green-100">
+            <p className="font-roboto text-xl">Company</p>
+            <li>Team</li>
+            <li>Blog</li>
+            <li>Carear</li>
+            <li>Support</li>
+          </div>
+
+          <div>
+            <span>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full p-3 border border-green-600 rounded-lg my-4"
+              />
+              <button className="mb-2 bg-green-600 text-white p-3 rounded-lg">
+                Subscribe
+              </button>
+            </span>
+            <span>
+              <p>Follow us</p>
+              <span></span>
+            </span>
+            <span>
+              <p>tel: +234-656- 6833-345</p>
+              <p>email: agrictech@dev.gmail.com</p>
+            </span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
