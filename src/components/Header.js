@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import NavItem from './NavItem';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,21 +30,21 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-6">
-          <Link href="/" className="hover:text-white text-lg font-bold ">Home</Link>
-          <Link href="/" className="hover:text-white text-lg font-bold">About</Link>          
-          <Link href="/" className="hover:text-white text-lg font-bold">Contact</Link>        
-          <Link href="/" className="hover:text-white text-lg font-bold">Get-started</Link>        
+            <NavItem href="/" >Home</NavItem>
+            <NavItem href="/" >About</NavItem>   
+            <NavItem href="/" >Contact</NavItem>       
+            <NavItem href="/" >Get-started</NavItem>
           </nav>
       </section>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <nav className="flex items-end flex-col mt-4 space-y-4 md:hidden">
-          <Link href="/" className="hover:text-white text-lg font-bold">Home</Link>
-          <Link href="/" className="hover:text-white text-lg font-bold">About</Link>
-          <Link href="/" className="hover:text-white text-lg font-bold">Contact</Link>
-          <Link href="/" className="hover:text-white text-lg font-bold">Get-Started</Link>
-        </nav>
+          <NavItem href="/" >Home</NavItem>
+          <NavItem href="/" >About</NavItem>
+          <NavItem href="/" >Contact</NavItem>
+          <NavItem href="/" >Get-started</NavItem>        
+          </nav>
       )}
     </header>
   );
