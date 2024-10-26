@@ -1,11 +1,10 @@
-import React from 'react'
+import React from 'react'; 
 
 const Header = () => {
   return (
     <section>
         <div>
-            <img>
-            </img>
+            <img/>
         </div>
 
         <div>
@@ -22,4 +21,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;
