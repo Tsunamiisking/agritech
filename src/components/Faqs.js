@@ -38,11 +38,11 @@ function Faqs() {
   };
   return (
     <>
-      <div className="p-5   border-t-2 border-green-600">
+      <div className="p-5   border-b-2 border-green-600 justify-center flex flex-col items-center">
         <p className="text-2xl font-semibold mb-2 text-center">FAQ</p>
 
         <div className="space-y-6 lg:flex flex-row justify-center items-center ">
-          <div className="space-y-4">
+          <div className=" space-y-4 w-6/12">
             <textarea
               className="w-full p-10 border border-x-green-600 rounded-lg "
               placeholder="Type in your question"
@@ -61,7 +61,7 @@ function Faqs() {
                   onClick={() => toggleFAQ(index)}
                 >
                   {faq.question}
-                  <span className="w-32 ml-20">
+                  <span className="w-32 ml-20 cursor-pointer">
                     {openIndex === index ? "-" : "+"}
                   </span>
                 </div>
