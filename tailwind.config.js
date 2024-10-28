@@ -25,6 +25,7 @@ module.exports = {
         none: "0",
         sm: "0.125rem",
         curve: "10px",
+        circle: "150%"
       },
     },
   },

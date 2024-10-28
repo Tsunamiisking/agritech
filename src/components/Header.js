@@ -12,10 +12,10 @@ const Header = () => {
   };
 
   return (
-    <header className="p-4 bg-primary shadow-md">
-      <section className="flex justify-between items-center">
+    <header className="fixed z-50 p-4 bg-primary shadow-md w-full lg:px-30">
+      <section className="flex justify-between items-center ">
         <div className="logo">
-          <Image src="/Images/logo-header.png" alt="header logo" width={200} height={300} />
+          <Image src="/Images/logo-header.png" alt="header logo" width={150} height={300} />
         </div>
 
         {/* Hamburger Icon for Mobile */}
@@ -29,7 +29,7 @@ const Header = () => {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-9">
             <NavItem href="/" >Home</NavItem>
             <NavItem href="/" >About</NavItem>   
             <NavItem href="/" >Contact</NavItem>       
