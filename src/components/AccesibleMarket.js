@@ -3,7 +3,7 @@ import React from "react";
 function AccesibleMarket() {
   return (
     <>
-      <div className="flex flex-col lg:flex-row px-10 items-center justify-center w-4/5">
+      <div className="flex flex-col  lg:px-10 items-center justify-center lg:w-4/5 lg:flex-row">
         <div className="font-extrabold font-roboto text-2xl text-balance flex items-center justify-center text-center text-green-600 my-3">
           <h3>An Accesible Market Place For Fresh Farm Produce</h3>
         </div>
