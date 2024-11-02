@@ -3,13 +3,13 @@ import React from "react";
 function Wiatlist() {
   return (
     <>
-      <div className="p-5">
+      <div className="p-5 flex flex-col items-center justify-center">
         <p className="mb-5 font-roboto text-center text-2xl">
           Join waitlist and get notified when we launch
         </p>
-        <span>
+        <span className="flex w-full">
           <input
-            className="w-3/5 p-5 mr-2 rounded-lg border-4 border-green-100 lg:w-5/6"
+            className=" w-10/12 p-5 mr-5 rounded-lg border-4 border-green-100 lg:w-full"
             type="email"
             placeholder="enter your mail"
           />
