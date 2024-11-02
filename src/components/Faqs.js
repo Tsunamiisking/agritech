@@ -38,17 +38,17 @@ function Faqs() {
   };
   return (
     <>
-      <div className="p-5   border-b-2 border-green-600 justify-center flex flex-col items-center">
+      <div className=" p-10   border-y-2 border-green-600 justify-center flex flex-col items-center">
         <p className="text-2xl font-semibold mb-2 text-center">FAQ</p>
 
         <div className="space-y-6 lg:flex flex-row justify-center items-center ">
-          <div className=" space-y-4 w-6/12">
+          <div className=" space-y-4 w-auto ">
             <textarea
-              className="w-full p-10 border border-x-green-600 rounded-lg "
+              className="w-full p-10 border border-x-green-600 rounded-lg focus:ring-2 focus:ring-gray-300 "
               placeholder="Type in your question"
             ></textarea>
 
-            <button className="w-2/4 bg-green-600 text-white py-2 rounded-lg m-auto">
+            <button className="w-2/4 bg-green-600 text-white py-2 rounded-lg m-auto hover:bg-green-100 hover:text-black">
               Submit
             </button>
           </div>
