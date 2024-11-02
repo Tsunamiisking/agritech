@@ -48,7 +48,7 @@ function Faqs() {
               placeholder="Type in your question"
             ></textarea>
 
-            <button className="w-2/4 bg-green-600 text-white py-2 rounded-lg m-auto hover:bg-green-100 hover:text-black">
+            <button className="w-2/4 bg-green-600 text-white py-2 rounded-lg m-auto duration-300 hover:bg-green-100 hover:border-green-600 hover:border-2 hover:text-black">
               Submit
             </button>
           </div>
@@ -65,7 +65,11 @@ function Faqs() {
                     {openIndex === index ? "-" : "+"}
                   </span>
                 </div>
-                {openIndex === index && <div className="">{faq.answer}</div>}
+                {openIndex === index && (
+                  <div className="flex items-center justify-between mb-2  w-96">
+                    {faq.answer}
+                  </div>
+                )}
               </div>
             ))}
           </div>
