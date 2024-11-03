@@ -11,6 +11,9 @@ module.exports = {
         roboto: ["Roboto Mono", "monospace"],
         playfair: ["Playfair Display", "cursive"],
       },
+      textShadow: {
+        default: "2px 2px 4px rgba(0, 0, 0, 0.7)", // Custom text shadow
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -22,9 +25,17 @@ module.exports = {
         none: "0",
         sm: "0.125rem",
         curve: "10px",
+        circle: "150%"
       },
-      
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".text-shadow": {
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+        },
+      });
+    },
+  ],
 };
