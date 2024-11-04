@@ -4,12 +4,13 @@ import NavItem from "./NavItem";
 
 function SideNav() {
   return (
-    <div className="w-72 bg-primary h-screen  rounded-tr-xl rounded-br-xl font-playfair">
+    <div className="w-96 bg-primary h-screen  rounded-tr-xl rounded-br-xl font-playfair">
       <div className="p-10 flex flex-col  items-center space-y-3">
         <Image
+          src={""}
           width={100}
           height={100}
-          alt={"profile-picture"}
+          alt="profile-picture"
           className="rounded-circle bg-secondary"
         />
         <h3 className="font-extrabold">Douglas Allen</h3>
@@ -18,7 +19,7 @@ function SideNav() {
         </h4>
       </div>
       <div className="bg-secondary h-full flex justify-center rounded-br-xl rounded-tr-full py-20">
-        <nav className="flex flex-col space-y-3  text-white ">
+        <nav className="flex flex-col space-y-3  text-white rounded-br-xl ">
           <NavItem href={"/"}> Marketplace</NavItem>
           <NavItem href={"/"}>Purchase History</NavItem>
           <NavItem href={"/"}>Cart</NavItem>
