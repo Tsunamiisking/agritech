@@ -3,9 +3,9 @@ import React from 'react'
 function MarketPlaceHeader() {
     const categories = [
 { id: 1, name: "Fishery", options: "Fishries, Crabs, Oyesters" },
-{ id: 1, name: "Fishery", options: "Fishries, Crabs, Oyesters" },
-{ id: 1, name: "Fishery", options: "Fishries, Crabs, Oyesters" },
-{ id: 1, name: "Fishery", options: "Fishries, Crabs, Oyesters" },
+{ id: 2, name: "Tubers", options: "Yam, Potatoe, Cassava" },
+{ id: 3, name: "Vegetables", options: "Carrots, Spinash, Cabbage" },
+{ id: 4, name: "Livestock", options: "Goat, Cow, Chicken" },
 ];
   
   return (
