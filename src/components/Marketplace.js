@@ -150,20 +150,24 @@ function Marketplace() {
   ];
 
   return (
-    <div className="px-5 flex flex-col items-center w-screen font-playfair ">
+    <div className="ml-64 px-5 flex flex-col items-center w-screen font-playfair ">
       <h3 className="font-bold">Marketplace</h3>
       <MarketPlaceHeader />
       <h3 className="font-bold">All Items</h3>
 
-      <div>
+      <div className="grid grid-cols-3">
         {products.map((items) => (
-          <div key={items.id}>
+          <div key={items.id} className="p-5 rounded-lg m-3 border-2 border-secondary flex flex-col items-center">
             <Image
               alt="product Image"
               src={items.imageUrl}
               width={200}
-              height={200}
+              height={100}
+              className="h-24 w-28"
             />
+            <p>{items.name}</p>
+            <p>{items.description}</p>
+            <button className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white ">More</button>
           </div>
         ))}
       </div>

@@ -4,7 +4,7 @@ import NavItem from "./NavItem";
 
 function SideNav() {
   return (
-    <div className="w-96 bg-primary h-screen  rounded-tr-xl rounded-br-xl font-playfair">
+    <div className="w-64 bg-primary h-screen fixed   rounded-tr-xl rounded-br-xl font-playfair">
       <div className="p-10 flex flex-col  items-center space-y-3">
         <Image
           src={""}
