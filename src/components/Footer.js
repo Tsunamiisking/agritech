@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { FaFacebookF } from "react-icons/fa";
+import { FaSquareFacebook } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
@@ -51,7 +51,7 @@ function Footer() {
             <p>Follow us</p>
             <span className="flex space-x-4 p-5">
               <span className="text-secondary text-4xl hover:text-white transition-colors duration-300">
-                <FaFacebookF />
+                <FaSquareFacebook />
               </span>
               <span className="text-secondary text-4xl hover:text-white transition-colors duration-300">
                 <FaInstagramSquare />
