@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import NavItem from "./NavItem";
 
-function SideNav() {
+function SideNav( {name}) {
   return (
     <div className="w-64 bg-primary h-screen fixed   rounded-tr-xl rounded-br-xl font-playfair">
       <div className="p-10 flex flex-col  items-center space-y-3">
@@ -13,7 +13,7 @@ function SideNav() {
           alt="profile-picture"
           className="rounded-circle bg-secondary"
         />
-        <h3 className="font-extrabold">Douglas Allen</h3>
+        <h3 className="font-extrabold">{name}</h3>
         <h4 className="bg-secondary py-1 px-6 rounded-lg font-semibold">
           Buyer
         </h4>
