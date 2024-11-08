@@ -43,6 +43,7 @@ const page = () => {
     try {
       const res = await CreateUserWithEmailAndPassword(formData.email, formData.password)
       console.log(res)
+      res.user.displayName = formData.username;
       formData.email = ''
       formData.password = ''
       formData.username  = ''
