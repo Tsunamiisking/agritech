@@ -6,7 +6,7 @@ function page() {
   return (
     <>
       <div className="flex">
-        <SideNav />
+        <SideNav option1={"Marketplace"} />
         <Marketplace />
       </div>
     </>
