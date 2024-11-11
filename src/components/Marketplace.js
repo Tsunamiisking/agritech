@@ -111,7 +111,7 @@ function Marketplace() {
       currency: "NGN",
       description: "High-protein soybeans, perfect for meals and processing.",
       imageUrl:
-        "https://images.pexels.com/photos/276503/pexels-photo-276503.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.pexels.com/photos/3735181/pexels-photo-3735181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "kg",
     },
     {
@@ -122,7 +122,7 @@ function Marketplace() {
       currency: "NGN",
       description: "Quality cocoa beans for chocolate production.",
       imageUrl:
-        "https://images.pexels.com/photos/2752372/pexels-photo-2752372.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.pexels.com/photos/50707/cocoa-man-colombia-peasant-50707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "kg",
     },
     {
@@ -133,7 +133,7 @@ function Marketplace() {
       currency: "NGN",
       description: "Pure, raw honey from organic sources.",
       imageUrl:
-        "https://images.pexels.com/photos/5314466/pexels-photo-5314466.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.pexels.com/photos/1872902/pexels-photo-1872902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "litre",
     },
     {
@@ -144,7 +144,7 @@ function Marketplace() {
       currency: "NGN",
       description: "Fresh ginger, perfect for cooking and tea.",
       imageUrl:
-        "https://images.pexels.com/photos/4110258/pexels-photo-4110258.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.pexels.com/photos/128403/pexels-photo-128403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "kg",
     },
   ];

@@ -1,5 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import { CiShop } from "react-icons/ci";
+import { RiFileList3Line } from "react-icons/ri";
+import { CiShoppingCart } from "react-icons/ci";
+import { IoSettingsOutline } from "react-icons/io5";
+import { GrLogout } from "react-icons/gr";
 import NavItem from "./NavItem";
 
 function SideNav({ userType, option1, option2, option3 }) {
@@ -20,11 +25,31 @@ function SideNav({ userType, option1, option2, option3 }) {
       </div>
       <div className="bg-secondary h-full flex justify-center rounded-br-xl rounded-tr-full py-20">
         <nav className="flex flex-col space-y-3  text-white rounded-br-xl ">
-          <NavItem href={"/"}> {option1}</NavItem>
-          <NavItem href={"/"}>{option2}</NavItem>
-          <NavItem href={"/"}>{option3}</NavItem>
-          <NavItem href={"/"}>Settings</NavItem>
-          <NavItem href={"/"}>Logout</NavItem>
+          <NavItem href={"/"}>
+            <span className="flex items-center">
+              <CiShop /> {option1}
+            </span>
+          </NavItem>
+          <NavItem href={"/"}>
+            <span className="flex items-center">
+              <RiFileList3Line /> {option2}
+            </span>
+          </NavItem>
+          <NavItem href={"/"}>
+            <span className="flex items-center">
+              <CiShoppingCart /> {option3}
+            </span>
+          </NavItem>
+          <NavItem href={"/"}>
+            <span className="flex items-center ">
+              <IoSettingsOutline /> Settings
+            </span>
+          </NavItem>
+          <NavItem href={"/"}>
+            <span className="flex items-center">
+              <GrLogout /> Logout
+            </span>
+          </NavItem>
         </nav>
       </div>
     </div>
