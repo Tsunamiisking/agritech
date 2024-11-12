@@ -89,7 +89,7 @@ function Marketplace() {
       currency: "NGN",
       description: "High-quality cassava flour for various recipes.",
       imageUrl:
-        "https://images.pexels.com/photos/4197588/pexels-photo-4197588.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.pexels.com/photos/7543161/pexels-photo-7543161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "kg",
     },
     {
@@ -100,7 +100,7 @@ function Marketplace() {
       currency: "NGN",
       description: "Rich and nutritious palm oil, ideal for cooking.",
       imageUrl:
-        "https://images.pexels.com/photos/4493120/pexels-photo-4493120.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.pexels.com/photos/220989/pexels-photo-220989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "litre",
     },
     {

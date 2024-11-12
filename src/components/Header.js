@@ -48,7 +48,7 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-9">
-          <NavItem href={"/dashboard"}>Home</NavItem>
+          <NavItem href={"/"}>Home</NavItem>
           <NavItem href="/">About</NavItem>
           <NavItem href="/">Contact</NavItem>
           <NavItem href="/">Get-started</NavItem>
