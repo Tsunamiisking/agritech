@@ -9,8 +9,8 @@ import NavItem from "./NavItem";
 
 function SideNav({ userType, option1, option2, option3 }) {
   return (
-    <div className="w-64 bg-primary h-screen fixed   rounded-tr-xl rounded-br-xl font-playfair">
-      <div className="p-10 flex flex-col  items-center space-y-3">
+    <div className="w-64 bg-primary h-screen hidden lg:block lg:fixed   rounded-tr-xl rounded-br-xl font-playfair">
+      <div className="p-5 flex flex-col  items-center space-y-3">
         <Image
           src={""}
           width={100}

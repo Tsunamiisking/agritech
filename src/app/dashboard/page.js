@@ -5,7 +5,7 @@ import React from "react";
 function page() {
   return (
     <>
-      <div className="flex">
+      <div className="flex px-5 lg:px-0">
         <SideNav
           option1={"Marketplace"}
           option2={"Purchase History"}
