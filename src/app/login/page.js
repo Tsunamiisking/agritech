@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "../firebase/config";
+import { useRouter } from "next/navigation";
 
 const page = () => {
   // State variables for form inputs
@@ -10,7 +11,7 @@ const page = () => {
     password: ""
   });
   const [SignInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth)
-
+  const router = useRouter();
   
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -29,7 +30,7 @@ const page = () => {
     e.preventDefault();
     
     // Simple validation example
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!formData.email || !formData.password) {
       setError("All fields are required");
       return;
     }
@@ -44,6 +45,7 @@ const page = () => {
       console.log('Signed in')
       formData.email = ''
       formData.password = ''
+      router.push('/dashboard')
 
     } catch (e) {
       console.error(e)
@@ -72,7 +74,7 @@ const page = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
               placeholder="Enter your email"
             />
           </div>
@@ -87,7 +89,7 @@ const page = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
               placeholder="Enter your password"
             />
           </div>
@@ -95,7 +97,7 @@ const page = () => {
           {/* Submit button */}
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700 transition duration-300"
+            className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-secondary focus:outline-none focus:bg-green-400 transition duration-300"
           >
             Sign in
           </button>
