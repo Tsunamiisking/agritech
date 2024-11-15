@@ -1,4 +1,5 @@
 import React from 'react'
+import Space from './Space';
 
 function MarketPlaceHeader() {
     const categories = [
@@ -13,7 +14,8 @@ function MarketPlaceHeader() {
       
       <div>
         <span>
-          <h5 className="font-bold">search</h5>
+          <h5 className="font-bold">Search</h5>
+          <Space size={80} axis="y"/>
           <div className="flex rounded-lg border-primary border-2 mt-2 ">
             <input className="w-full p-3" type="search" placeholder="Search" />
             <span className="p-3 bg-secondary justify-items-end">🔍</span>
