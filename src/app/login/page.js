@@ -1,18 +1,16 @@
 'use client'
 import { useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "../firebase/config";
 import { useRouter } from "next/navigation";
 
 const page = () => {
   // State variables for form inputs
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: ""
   });
-  const [CreateUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth)
-  // console.log(useCreateUserWithEmailAndPassword(auth))
+  const [SignInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth)
   const router = useRouter();
   
   const [error, setError] = useState("");
@@ -32,7 +30,7 @@ const page = () => {
     e.preventDefault();
     
     // Simple validation example
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!formData.email || !formData.password) {
       setError("All fields are required");
       return;
     }
@@ -43,14 +41,11 @@ const page = () => {
     
     // Additional sign-up logic here
     try {
-      const res = await CreateUserWithEmailAndPassword(formData.email, formData.password)
-      console.log(res)
-      res.user.displayName = formData.username;
+      const res = await SignInWithEmailAndPassword(formData.email, formData.password)
+      console.log('Signed in')
       formData.email = ''
       formData.password = ''
-      formData.username  = ''
       router.push('/dashboard')
-
 
     } catch (e) {
       console.error(e)
@@ -61,27 +56,13 @@ const page = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Sign in</h2>
         
         {/* Display error or success messages */}
         {error && <p className="text-red-500 text-center">{error}</p>}
         {success && <p className="text-green-500 text-center">{success}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Username input */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Username
-            </label>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-              placeholder="Enter your username"
-            />
-          </div>
 
           {/* Email input */}
           <div>
@@ -118,7 +99,7 @@ const page = () => {
             type="submit"
             className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-secondary focus:outline-none focus:bg-green-400 transition duration-300"
           >
-            Sign Up
+            Sign in
           </button>
         </form>
       </div>
