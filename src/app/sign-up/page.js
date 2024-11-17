@@ -4,7 +4,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "../firebase/config";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   // State variables for form inputs
   const [formData, setFormData] = useState({
     username: "",
@@ -126,4 +126,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
