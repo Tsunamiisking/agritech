@@ -127,21 +127,21 @@ function Page() {
 
   return (
     <>
-      <div className="flex px-5 lg:px-0">
+      <div className="flex px-5 lg:px-0 font-roboto">
         <SideNav
           option1={"Dashboard"}
           option2={"Item History"}
           option3={"Add Item"}
           userType={"Seller"}
         />
-        <div className="lg:ml-64 lg:px-5 flex flex-col items-center w-screen font-playfair">
+        <div className="lg:ml-64 lg:px-5 flex flex-col items-center w-screen ">
           <h3 className="mr-auto font-bold mt-2">Good Morning, Douglas</h3>
 
-          <div className="flex flex-row mt-10  mb-10 ">
-            <div className="border-2 border-green-600 rounded-lg p-4 mr-auto ">
+          <div className="flex flex-row mt-10  mb-10 border-b-2 border-secondary">
+            <div className="">
               <BarChart data={dummyData} labels={dummyLabels} />
             </div>
-            <div className="border-2 border-secondary ml-5 flex flex-col p-2 rounded-lg  ">
+            <div className="border-l-2 border-secondary ml-auto flex flex-col p-2 rounded-lg w-6/12 ">
               <p className="mx-auto"> Messages</p>
               <div className="flex flex-col">
                 {messages.map((message) => (
