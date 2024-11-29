@@ -5,7 +5,7 @@ import { auth } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const page = () => {
+const Page = () => {
   // State variables for form inputs
   const [formData, setFormData] = useState({
     email: "",
@@ -120,4 +120,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
