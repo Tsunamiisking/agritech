@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "../firebase/config";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const page = () => {
   // State variables for form inputs
@@ -42,7 +43,6 @@ const page = () => {
     // Additional sign-up logic here
     try {
       const res = await SignInWithEmailAndPassword(formData.email, formData.password)
-      console.log('Signed in')
       formData.email = ''
       formData.password = ''
       router.push('/dashboard')
@@ -52,11 +52,22 @@ const page = () => {
     }
   
   };
+  const img = {
+    backgroundImage: `url('/images/open-farm.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "20rem"
+  };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign in</h2>
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="grid grid-cols-2 w-full max-w-5xl px-8">
+      <div className="flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md" style={img}>
+      <div>
+        <h2 className="text-white text-3xl font-bold text-center mb-2">Welcome Back!</h2>
+        </div>
+      </div>
+      <div className="bg-white rounded-r-lg shadow-md p-8 flex items-center justify-center min-h-[30rem]">
         
         {/* Display error or success messages */}
         {error && <p className="text-red-500 text-center">{error}</p>}
@@ -101,7 +112,9 @@ const page = () => {
           >
             Sign in
           </button>
+          <p className="text-center text-sm pt-2"> Forgot your password?<a className="text-green-600" > Reset Password. </a> </p>
         </form>
+      </div>
       </div>
     </div>
   );

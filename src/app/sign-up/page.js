@@ -58,11 +58,22 @@ const page = () => {
   
   };
 
+  const img = {
+    backgroundImage: `url('/images/open-farm.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "20rem"
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
-        
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="grid grid-cols-2 w-full max-w-5xl px-8">
+      <div className="flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md" style={img}>
+      <div>
+        <h2 className="text-white text-3xl font-bold text-center mb-2">Create an account!</h2>
+        </div>
+      </div>
+      <div className="bg-white rounded-r-lg shadow-md p-8 flex items-center justify-center min-h-[30rem]">
         {/* Display error or success messages */}
         {error && <p className="text-red-500 text-center">{error}</p>}
         {success && <p className="text-green-500 text-center">{success}</p>}
@@ -120,10 +131,13 @@ const page = () => {
           >
             Sign Up
           </button>
+          <p className="text-center text-sm pt-2">Already a member? <a href="/login " className="text-green-700">Sign-in</a></p>
         </form>
+      </div>
       </div>
     </div>
   );
 };
 
 export default page;
+
