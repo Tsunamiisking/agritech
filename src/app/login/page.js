@@ -45,7 +45,7 @@ const Page = () => {
       const res = await SignInWithEmailAndPassword(formData.email, formData.password)
       formData.email = ''
       formData.password = ''
-      router.push('/dashboard')
+      router.push('/marketPlace')
 
     } catch (e) {
       console.error(e)
