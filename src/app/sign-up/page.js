@@ -55,7 +55,14 @@ const Page = () => {
       formData.email = "";
       formData.password = "";
       formData.username = "";
-      router.push("/marketPlace");
+      if (formData.role === "seller") {
+        router.push("/marketPlace");
+      } else if (formData.role === "buyer") {
+        router.push("/dashboard");
+      } else{
+        router.push("/sign-up");
+      }
+      formData.role = ""
     } catch (e) {
       console.error(e);
     }
@@ -128,9 +135,8 @@ const Page = () => {
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
               >
                 <option value="">Select your role</option>
-                <option value="admin">Seller</option>
-                <option value="user">Buy</option>
-                <option value="guest">Guest</option>
+                <option value="seller">Seller</option>
+                <option value="buyer">Buyer</option>
               </select>
             </div>
 
