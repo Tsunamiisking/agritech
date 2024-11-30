@@ -17,7 +17,7 @@ function Product() {
       name: "Organic Tomatoes",
       category: "Vegetables",
       price: 3500,
-      currency: "NGN  ",
+      currency: "NGN",
       description: "Fresh organic tomatoes from local farms.",
       imageUrl:
         "https://images.pexels.com/photos/28039617/pexels-photo-28039617/free-photo-of-tomatoes-in-a-basket.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -69,14 +69,14 @@ function Product() {
     },
     {
       id: 106,
-      name: "Wheat Flour",
-      category: "Flour",
-      price: 1500,
+      name: "Spinach",
+      category: "Vegetables",
+      price: 500,
       currency: "NGN",
-      description: "Finely milled wheat flour, ideal for baking.",
+      description: "Fresh green spinach leaves, rich in nutrients.",
       imageUrl:
-        "https://images.pexels.com/photos/326082/pexels-photo-326082.jpeg?auto=compress&cs=tinysrgb&w=800",
-      unit: "kg",
+        "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=400",
+      unit: "bunch",
     },
     {
       id: 107,
@@ -124,17 +124,6 @@ function Product() {
     },
     {
       id: 111,
-      name: "Cocoa Beans",
-      category: "Nuts & Seeds",
-      price: 8000,
-      currency: "NGN",
-      description: "Quality cocoa beans for chocolate production.",
-      imageUrl:
-        "https://images.pexels.com/photos/50707/cocoa-man-colombia-peasant-50707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      unit: "kg",
-    },
-    {
-      id: 112,
       name: "Honey",
       category: "Sweeteners",
       price: 2500,
@@ -143,6 +132,17 @@ function Product() {
       imageUrl:
         "https://images.pexels.com/photos/1872902/pexels-photo-1872902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "litre",
+    },
+    {
+      id: 112,
+      name: "Carrots",
+      category: "Vegetables",
+      price: 800,
+      currency: "NGN",
+      description: "Fresh and crunchy carrots, rich in vitamins.",
+      imageUrl:
+        "https://images.pexels.com/photos/2663464/pexels-photo-2663464.jpeg?auto=compress&cs=tinysrgb&w=400",
+      unit: "kg",
     },
     {
       id: 113,
@@ -155,10 +155,36 @@ function Product() {
         "https://images.pexels.com/photos/128403/pexels-photo-128403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       unit: "kg",
     },
+    {
+      id: 114,
+      name: "Yam",
+      category: "Vegetables",
+      price: 4000,
+      currency: "NGN",
+      description: "Premium tubers of yam, perfect for various meals.",
+      imageUrl:
+        "https://images.pexels.com/photos/159619/pexels-photo-159619.jpeg?auto=compress&cs=tinysrgb&w=400",
+      unit: "tuber",
+    },
+    {
+      id: 115,
+      name: "Coconut Oil",
+      category: "Oils",
+      price: 6000,
+      currency: "NGN",
+      description: "Pure virgin coconut oil for cooking and skin care.",
+      imageUrl:
+        "https://images.pexels.com/photos/209555/pexels-photo-209555.jpeg?auto=compress&cs=tinysrgb&w=400",
+      unit: "litre",
+    },
   ];
-
   const filteredProducts =
-     products.filter((product) => product.category === selectedCategory);
+    selectedProduct &&
+    products.filter((product) => product.category === selectedProduct.category);
+
+  // const filteredProducts = selectedProduct
+  //   ? selectedCategory
+  //   : products.filter((product) => product.category === selectedCategory);
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       {products.map((items) => (
@@ -187,7 +213,6 @@ function Product() {
         <Modal
           product={selectedProduct}
           closeModal={closeModal}
-          selectedCategory={selectedCategory}
           filteredProducts={filteredProducts}
         />
       )}
