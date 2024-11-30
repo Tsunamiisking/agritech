@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import { useRouter } from "next/navigation";
+import { addUserToFirestore } from "../firebase/db";
 
 const Page = () => {
   // State variables for form inputs
@@ -55,13 +56,22 @@ const Page = () => {
       formData.email = "";
       formData.password = "";
       formData.username = "";
-      if (formData.role === "seller") {
-        router.push("/marketPlace");
-      } else if (formData.role === "buyer") {
-        router.push("/dashboard");
-      } else{
-        router.push("/sign-up");
+
+      try {
+        const addres = await addUserToFirestore(res.user, formData.role )
+        if (addres) {
+          console.log(addres)
+        }
+      } catch (e) {
+    
       }
+      // if (formData.role === "seller") {
+      //   router.push("/marketPlace");
+      // } else if (formData.role === "buyer") {
+      //   router.push("/dashboard");
+      // } else{
+      //   router.push("/sign-up");
+      // }
       formData.role = ""
     } catch (e) {
       console.error(e);
@@ -134,7 +144,7 @@ const Page = () => {
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
               >
-                <option value="">Select your role</option>
+                <option disabled value="">Select your role</option>
                 <option value="seller">Seller</option>
                 <option value="buyer">Buyer</option>
               </select>
@@ -160,12 +170,12 @@ const Page = () => {
               type="submit"
               className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-secondary focus:outline-none focus:bg-green-400 transition duration-300"
             >
-              Sign in
+              Sign Up
             </button>
             <p className="text-center text-sm pt-2">
               {" "}
-              Forgot your password?
-              <a className="text-green-600"> Reset Password. </a>{" "}
+              Already have an account
+              <a href="/login" className="text-green-600"> Log in </a>{" "}
             </p>
           </form>
         </div>

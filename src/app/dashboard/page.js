@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import ProtectedRoute from "@/components/ProtectedRoutes";
 import SideNav from "@/components/SideNav";
 import { Bar } from "react-chartjs-2";
 import {
@@ -121,7 +122,7 @@ const messages = [
   },
 ];
 
-function Page() {
+const Page = () => {
   const dummyLabels = ["Sales", "Stock"];
   const dummyData = [10, 15];
 
@@ -174,4 +175,10 @@ function Page() {
   );
 }
 
-export default Page;
+export default function ProtectedDashboard() {
+  return (
+    <ProtectedRoute>
+      <Page />
+    </ProtectedRoute>
+  );
+}

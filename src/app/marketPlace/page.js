@@ -1,8 +1,9 @@
 import Marketplace from "@/components/Marketplace";
 import SideNav from "@/components/SideNav";
 import React from "react";
+import ProtectedRoute from "@/components/ProtectedRoutes";
 
-function page() {
+const Page = () => {
   return (
     <>
       <div className="flex px-5 lg:px-0">
@@ -18,4 +19,10 @@ function page() {
   );
 }
 
-export default page;
+export default function ProtectedMarketPlace() {
+  return (
+    <ProtectedRoute>
+      <Page />
+    </ProtectedRoute>
+  );
+}

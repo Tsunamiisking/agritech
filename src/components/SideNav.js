@@ -12,7 +12,7 @@ function SideNav({ userType, option1, option2, option3 }) {
     <div className="w-64 bg-primary h-screen hidden lg:block lg:fixed   rounded-tr-xl rounded-br-xl font-playfair">
       <div className="p-5 flex flex-col  items-center space-y-3">
         <Image
-          src={""}
+          src={"/images/"}
           width={100}
           height={100}
           alt="profile-picture"
