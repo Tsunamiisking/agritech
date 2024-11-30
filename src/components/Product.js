@@ -1,7 +1,16 @@
+"use client";
 import React from "react";
+import { useState } from "react";
 import Image from "next/image";
+import Modal from "./Modal";
 
 function Product() {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedCategory, setSelectedCategoty] = useState("All");
+
+  const openModal = (product) => setSelectedProduct(product);
+  const closeModal = () => setSelectedProduct(null);
+
   const products = [
     {
       id: 101,
@@ -147,6 +156,9 @@ function Product() {
       unit: "kg",
     },
   ];
+
+  const filteredProducts =
+     products.filter((product) => product.category === selectedCategory);
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       {products.map((items) => (
@@ -163,11 +175,22 @@ function Product() {
           />
           <p>{items.name}</p>
           <p>#{items.price}</p>
-          <button className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white ">
+          <button
+            className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white"
+            onClick={() => openModal(items)}
+          >
             More
           </button>
         </div>
       ))}
+      {selectedProduct && (
+        <Modal
+          product={selectedProduct}
+          closeModal={closeModal}
+          selectedCategory={selectedCategory}
+          filteredProducts={filteredProducts}
+        />
+      )}
     </div>
   );
 }
