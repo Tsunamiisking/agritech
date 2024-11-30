@@ -51,7 +51,7 @@ const Header = () => {
           <NavItem href={"/dashboard"}>Home</NavItem>
           <NavItem href="/">About</NavItem>
           <NavItem href="/">Contact</NavItem>
-          <NavItem href="/">Get-started</NavItem>
+          <NavItem href={"/marketplace"}>Get-started</NavItem>
         </nav>
       </section>
 

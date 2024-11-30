@@ -148,11 +148,11 @@ function Product() {
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       {products.map((items) => (
         <div
           key={items.id}
-          className="p-2 rounded-lg m-2 border-2 border-secondary flex flex-col items-center"
+          className="p-2 rounded-lg m-2 border-2 border-secondary flex flex-col items-center "
         >
           <Image
             alt="product Image"
@@ -162,7 +162,7 @@ function Product() {
             className="h-24 w-28 rounded-md"
           />
           <p>{items.name}</p>
-          <p>{items.description}</p>
+          <p>#{items.price}</p>
           <button className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white ">
             More
           </button>
