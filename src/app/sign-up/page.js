@@ -209,6 +209,14 @@ const Page = () => {
                 Log in{" "}
               </a>{" "}
             </p>
+            <div className="text-center">
+              <hr />
+              <p className="mt-4">
+                <a href="/sign-up" className="text-sm text-green-600">
+                  Create an account
+                </a>
+              </p>
+            </div>
           </form>
         </div>
       </div>
