@@ -11,7 +11,7 @@ const Page = () => {
     email: "",
     password: "",
   });
-  const [SignInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [SignInWithEmailAndPassword, user, loading] = useSignInWithEmailAndPassword(auth);
   const router = useRouter();
 
   const [error, setError] = useState("");

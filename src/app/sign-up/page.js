@@ -75,15 +75,16 @@ const Page = () => {
 
       // Success feedback
       setSuccess("Successfully signed up!");
+      router.push("/login")
 
       // Redirect based on role
-      if (formData.role === "seller") {
-        router.push("/marketPlace");
-      } else if (formData.role === "buyer") {
-        router.push("/dashboard");
-      } else {
-        router.push("/"); // Optional fallback route
-      }
+      // if (formData.role === "seller") {
+      //   router.push("/marketPlace");
+      // } else if (formData.role === "buyer") {
+      //   router.push("/dashboard");
+      // } else {
+      //   router.push("/"); // Optional fallback route
+      // }
 
       // Clear form data
       setFormData({ email: "", password: "", username: "", role: "" });
@@ -210,17 +211,17 @@ const Page = () => {
                 Log in{" "}
               </a>{" "}
             </p>
+            <hr />
             <div className="grid grid-cols-1 place-items-center gap-4 ">
             <div className="">
-              <hr />
-              <p className="mt-4">
-                <a href="/sign-up" className="text-sm text-green-600">
+              <p>
+                <a className="text-sm text-green-600">
                   Create an account
                 </a>
               </p>
             </div>
-            <div className="">
-            <FcGoogle className="text-4xl" />
+            <div >
+            <FcGoogle className="text-3xl cursor-pointer" />
             </div>
             </div>
           </form>
