@@ -54,7 +54,7 @@ const Page = () => {
        formData.email,
        formData.password
      );
-     console.log(res)
+    //  console.log(res)
  
      // Update user's display name
      await updateProfile(res.user, {
@@ -69,7 +69,7 @@ const Page = () => {
        type: formData.role,
      });
  
-     console.log("User added to Firestore:", userDoc.id);
+    //  console.log("User added to Firestore:", userDoc.id);
  
      // Success feedback
      setSuccess("Successfully signed up!");
