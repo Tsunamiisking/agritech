@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth, firestore  } from "../firebase/config";
+import { auth, firestore } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import { addUserToFirestore } from "../firebase/db";
 import { updateProfile } from "firebase/auth";
@@ -44,61 +44,61 @@ const Page = () => {
       return;
     }
 
-   // Reset messages
-   setError("");
-   setSuccess("");
- 
-   try {
-     // Create user with email and password
-     const res = await CreateUserWithEmailAndPassword(
-       formData.email,
-       formData.password
-     );
-    //  console.log(res)
- 
-     // Update user's display name
-     await updateProfile(res.user, {
-       displayName: formData.username,
-     });
- 
-     // Add user to Firestore
-     const userDoc = await addDoc(collection(firestore, "Users"), {
-       uid: res.user.uid,
-       displayName: formData.username,
-       email: formData.email,
-       type: formData.role,
-     });
- 
-    //  console.log("User added to Firestore:", userDoc.id);
- 
-     // Success feedback
-     setSuccess("Successfully signed up!");
-     
-     // Redirect based on role
-     if (formData.role === "seller") {
-       router.push("/marketPlace");
-     } else if (formData.role === "buyer") {
-       router.push("/dashboard");
-     } else {
-       router.push("/"); // Optional fallback route
-     }
- 
-     // Clear form data
-     setFormData({ email: "", password: "", username: "", role: "" });
-     
-   } catch (error) {
-     // Error handling for Authentication or Firestore
-     let errorMessage;
-     if (error.code === "auth/email-already-in-use") {
-       errorMessage = "This email is already in use. Please try another.";
-     } else if (error.code === "auth/weak-password") {
-       errorMessage = "Password is too weak. Please use a stronger password.";
-     } else {
-       errorMessage = "An error occurred. Please try again.";
-     }
-     console.error("Error during signup:", error);
-     setError(errorMessage);
-   }
+    // Reset messages
+    setError("");
+    setSuccess("");
+
+    try {
+      // Create user with email and password
+      const res = await CreateUserWithEmailAndPassword(
+        formData.email,
+        formData.password
+      );
+      
+      //  console.log(res)
+
+      // Update user's display name
+      await updateProfile(res.user, {
+        displayName: formData.username,
+      });
+
+      // Add user to Firestore
+      const userDoc = await addDoc(collection(firestore, "Users"), {
+        uid: res.user.uid,
+        displayName: formData.username,
+        email: formData.email,
+        type: formData.role,
+      });
+
+      //  console.log("User added to Firestore:", userDoc.id);
+
+      // Success feedback
+      setSuccess("Successfully signed up!");
+
+      // Redirect based on role
+      if (formData.role === "seller") {
+        router.push("/marketPlace");
+      } else if (formData.role === "buyer") {
+        router.push("/dashboard");
+      } else {
+        router.push("/"); // Optional fallback route
+      }
+
+      // Clear form data
+      setFormData({ email: "", password: "", username: "", role: "" });
+    } catch (error) {
+      // Error handling for Authentication or Firestore
+      let errorMessage;
+      if (error.code === "auth/email-already-in-use") {
+        errorMessage = "This email is already in use. Please try another.";
+      } else if (error.codewha === "auth/weak-password") {
+        errorMessage = "Password is too weak. Please use a stronger password.";
+      } else {
+        errorMessage = "An error occurred. Please try again.";
+      }
+      console.error("Error during signup:", error);
+      setError(errorMessage);
+    }
   };
 
   if (loading) {
@@ -171,7 +171,9 @@ const Page = () => {
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
               >
-                <option disabled value="">Select your role</option>
+                <option disabled value="">
+                  Select your role
+                </option>
                 <option value="seller">Seller</option>
                 <option value="buyer">Buyer</option>
               </select>
@@ -202,7 +204,10 @@ const Page = () => {
             <p className="text-center text-sm pt-2">
               {" "}
               Already have an account
-              <a href="/login" className="text-green-600"> Log in </a>{" "}
+              <a href="/login" className="text-green-600">
+                {" "}
+                Log in{" "}
+              </a>{" "}
             </p>
           </form>
         </div>
