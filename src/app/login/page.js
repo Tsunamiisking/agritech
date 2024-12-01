@@ -36,22 +36,40 @@ const Page = () => {
       return;
     }
 
-    // Reset messages, and simulate form submission
-    setError("");
-    setSuccess("Successfully signed up!");
-
     // Additional sign-up logic here
     try {
+      // Clear previous messages
+      setError("");
+      setSuccess("");
+  
       const res = await SignInWithEmailAndPassword(
         formData.email,
         formData.password
       );
+  
+      // Clear form inputs
       formData.email = "";
       formData.password = "";
+  
+      // Navigate user to the marketplace
       router.push("/marketPlace");
-      console.log(res.user)
+      console.log(res.user);
+  
+      // Success message
+      setSuccess("Successfully signed in!");
     } catch (e) {
-      console.error(e);
+      let customMessage;
+      switch (e.code) {
+        case "auth/user-not-found":
+          customMessage = "No account found with this email. Please sign up.";
+          break;
+        case "auth/wrong-password":
+          customMessage = "Incorrect password. Try again.";
+          break;
+        default:
+          customMessage = "Something went wrong. Please try again later.";
+      }
+      setError(customMessage);
     }
   };
   const img = {
