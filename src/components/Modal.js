@@ -1,13 +1,15 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useState } from "react";
 import { BsCartPlus } from "react-icons/bs";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
 
-function Modal({ product, closeModal, filteredProducts }) {
+function Modal({ product, closeModal, filteredProducts, toggleFavorite }) {
   console.log(product);
   return (
-    <div className=" mx-auto my-auto lg:w-6/12 h-3/4 bg-primary fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 rounded-xl">
+    <div className=" m-auto lg:w-6/12 h-3/4 bg-primary fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 rounded-xl">
       <button
         onClick={closeModal}
         className="absolute top-2 right-2 bg-red-500 text-white rounded-circle p-3"
@@ -26,19 +28,23 @@ function Modal({ product, closeModal, filteredProducts }) {
           <Image
             src={product.imageUrl}
             alt={product.name}
-            width={300} // Add appropriate width
-            height={200} // Add appropriate height
+            width={300}
+            height={200}
             className="rounded-lg mt-4 h-28"
           />
-          <div className=" mt-1 bg-secondary flex space-x-7 p-1 rounded-ss-2xl rounded-ee-2xl items-center justify-items-center ">
-            <button>
-              <AiOutlineLike />
+          <div className="mt-1 bg-secondary flex space-x-7 p-1 rounded-ss-2xl rounded-ee-2xl items-center justify-items-center">
+            <button onClick={() => toggleFavorite(product)}>
+              {favorites.some((fav) => fav.id === product.id) ? (
+                <AiFillHeart className="text-red-500" />
+              ) : (
+                <AiOutlineHeart />
+              )}
             </button>
-            <button className=" border-x-2 p-1">
-              <BsCartPlus />
+            <button className="border-x-2 p-1">
+              <BsCartPlus className="text-2xl" />
             </button>
             <button>
-              <IoCallOutline />
+              <IoCallOutline className="text-2xl" />
             </button>
           </div>
         </div>

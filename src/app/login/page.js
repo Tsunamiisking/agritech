@@ -50,13 +50,15 @@ const Page = () => {
       // Clear form inputs
       formData.email = "";
       formData.password = "";
+
+      router.push("/marketplace");
+      console.log(res.user)
+
   
-      // Navigate user to the marketplace
-      router.push("/marketPlace");
-      console.log(res.user);
-  
+ 
       // Success message
       setSuccess("Successfully signed in!");
+
     } catch (e) {
       let customMessage;
       switch (e.code) {
