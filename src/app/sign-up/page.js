@@ -7,6 +7,7 @@ import { addUserToFirestore } from "../firebase/db";
 import { updateProfile } from "firebase/auth";
 import Loading from "@/components/Loading";
 import { addDoc, collection } from "firebase/firestore";
+import { FcGoogle } from "react-icons/fc";
 
 const Page = () => {
   // State variables for form inputs
@@ -209,13 +210,18 @@ const Page = () => {
                 Log in{" "}
               </a>{" "}
             </p>
-            <div className="text-center">
+            <div className="grid grid-cols-1 place-items-center gap-4 ">
+            <div className="">
               <hr />
               <p className="mt-4">
                 <a href="/sign-up" className="text-sm text-green-600">
                   Create an account
                 </a>
               </p>
+            </div>
+            <div className="">
+            <FcGoogle className="text-4xl" />
+            </div>
             </div>
           </form>
         </div>
