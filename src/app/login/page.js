@@ -48,7 +48,7 @@ const Page = () => {
       );
       formData.email = "";
       formData.password = "";
-      router.push("/marketPlace");
+      router.push("/marketplace");
       console.log(res.user)
     } catch (e) {
       console.error(e);
