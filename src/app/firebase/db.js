@@ -1,12 +1,12 @@
 
 import { doc, setDoc, updateDoc  } from "firebase/firestore";
-import { auth, db } from "../firebase/config"
+import { auth, firestore } from "../firebase/config"
 
 
 // Add user to fire store
 
 export const addUserToFirestore = async (user, type) => {
-  const userRef = doc(db, "Users", user.uid); // Use UID as document ID
+  const userRef = doc(firestore, "Users", user.uid); // Use UID as document ID
   await setDoc(userRef, {
     email: user.email,
     username: user.displayName || "Anonymous",
