@@ -6,7 +6,7 @@ import Modal from "./Modal";
 
 function Product() {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [selectedCategory, setSelectedCategoty] = useState("All");
+  const [favorites, setFavorites] = useState([]);
 
   const openModal = (product) => setSelectedProduct(product);
   const closeModal = () => setSelectedProduct(null);
@@ -181,10 +181,17 @@ function Product() {
   const filteredProducts =
     selectedProduct &&
     products.filter((product) => product.category === selectedProduct.category);
+ 
+    const toggleFavorite = (product) => {
+      const isFavorited = favorites.some((fav) => fav.id === product.id);
+      const updatedFavorites = isFavorited
+        ? favorites.filter((fav) => fav.id !== product.id)
+        : [...favorites, product];
+  
+      setFavorites(updatedFavorites);
+  
+  };
 
-  // const filteredProducts = selectedProduct
-  //   ? selectedCategory
-  //   : products.filter((product) => product.category === selectedCategory);
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       {products.map((items) => (
@@ -214,6 +221,7 @@ function Product() {
           product={selectedProduct}
           closeModal={closeModal}
           filteredProducts={filteredProducts}
+          favorites={toggleFavorite}
         />
       )}
     </div>

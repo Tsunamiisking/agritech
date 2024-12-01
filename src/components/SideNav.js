@@ -30,7 +30,7 @@ function SideNav({ userType, option1, option2, option3 }) {
               <CiShop /> {option1}
             </span>
           </NavItem>
-          <NavItem href={"/"}>
+          <NavItem href={"/favorites"}>
             <span className="flex items-center">
               <RiFileList3Line /> {option2}
             </span>
