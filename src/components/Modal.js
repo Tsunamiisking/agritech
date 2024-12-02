@@ -1,24 +1,33 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect } from "react";
 import { BsCartPlus } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
 
-function Modal({ product, closeModal, filteredProducts, toggleFavorite }) {
-  console.log(product);
+function Modal({
+  product,
+  closeModal,
+  filteredProducts,
+  favorites,
+  setFavorites,
+  toggleFavorite,
+}) {
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(storedFavorites);
+  }, [setFavorites]);
   return (
-    <div className=" m-auto lg:w-6/12 h-3/4 bg-primary fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 rounded-xl">
+    <div className="m-auto   ml-72 lg:w-3/4 h-3/4 bg-primary fixed inset-0 bg-opacity-85 z-50 rounded-xl">
       <button
         onClick={closeModal}
-        className="absolute top-2 right-2 bg-red-500 text-white rounded-circle p-3"
+        className="absolute top-2 right-2 bg-white text-black rounded-circle p-3"
       >
-        {" "}
-        X{" "}
+        X
       </button>
-      <div className="flex mx-auto">
-        <div className="bg-white rounded-lg p-5 h-auto w-3/4 md:w-1/2 lg:w-1/3 my-auto ml-2">
+      <div className="flex">
+        <div className="bg-white rounded-lg p-5  w-3/4 md:w-1/2 lg:w-1/3  my-24 ml-2">
           <h2 className="text-lg font-bold">{product.name}</h2>
           <p className="text-sm text-gray-500">{product.category}</p>
           <p className="text-md mt-2">
@@ -32,7 +41,7 @@ function Modal({ product, closeModal, filteredProducts, toggleFavorite }) {
             height={200}
             className="rounded-lg mt-4 h-28"
           />
-          <div className="mt-1 bg-secondary flex space-x-7 p-1 rounded-ss-2xl rounded-ee-2xl items-center justify-items-center">
+          <div className="mt-1 justify-evenly bg-secondary flex  p-1 rounded-ss-2xl rounded-ee-2xl items-center  text-2xl h-10 ">
             <button onClick={() => toggleFavorite(product)}>
               {favorites.some((fav) => fav.id === product.id) ? (
                 <AiFillHeart className="text-red-500" />
@@ -40,12 +49,16 @@ function Modal({ product, closeModal, filteredProducts, toggleFavorite }) {
                 <AiOutlineHeart />
               )}
             </button>
-            <button className="border-x-2 p-1">
-              <BsCartPlus className="text-2xl" />
+            <button className="">
+              <BsCartPlus className="" />
             </button>
             <button>
-              <IoCallOutline className="text-2xl" />
+              <IoCallOutline className="" />
             </button>
+            {/* <span className="flex flex-col -space-y-3 ">
+              <button>+</button>
+              <button>-</button>
+            </span> */}
           </div>
         </div>
 
@@ -53,7 +66,7 @@ function Modal({ product, closeModal, filteredProducts, toggleFavorite }) {
           <h3 className="text-xl font-semibold">
             More Products in {product.category}
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 mt-2 place-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-2 place-items-center">
             {filteredProducts &&
               filteredProducts.map((prod) => (
                 <div
