@@ -19,6 +19,7 @@ const Page = () => {
   );
 }
 
+// export default Page;
 export default function ProtectedMarketPlace() {
   return (
     <ProtectedRoute>
