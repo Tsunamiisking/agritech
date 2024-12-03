@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Loading from "@/components/Loading";
 
 const Page = () => {
   // State variables for form inputs
@@ -11,7 +12,7 @@ const Page = () => {
     email: "",
     password: "",
   });
-  const [SignInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [SignInWithEmailAndPassword, user, loading] = useSignInWithEmailAndPassword(auth);
   const router = useRouter();
 
   const [error, setError] = useState("");
@@ -36,7 +37,8 @@ const Page = () => {
       return;
     }
 
-    // Additional sign-up logic here
+    // Additional sign-in logic here
+
     try {
       // Clear previous messages
       setError("");
@@ -52,10 +54,7 @@ const Page = () => {
       formData.password = "";
 
       router.push("/marketplace");
-      console.log(res.user)
 
-  
- 
       // Success message
       setSuccess("Successfully signed in!");
 
@@ -74,6 +73,12 @@ const Page = () => {
       setError(customMessage);
     }
   };
+
+  
+  if (loading) {
+    return <Loading />;
+  }
+
   const img = {
     backgroundImage: `url('/images/open-farm.jpg')`,
     backgroundSize: "cover",
@@ -146,7 +151,7 @@ const Page = () => {
               <hr />
               <p className="mt-4">
                 <a href="/sign-up" className="text-sm text-green-600">
-                  Create an account
+                  Create new account
                 </a>
               </p>
             </div>
