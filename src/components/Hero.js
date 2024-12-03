@@ -11,10 +11,7 @@ const Hero = () => {
         height: "100vh",
       }}
     >
-      {/* Optional overlay for background dimming */}
-      {/* <div className="absolute inset-0 bg-secondary opacity-30"></div> */}
-
-      {/* Hero Text Section */}
+      
       <div className="p-10 text-center">
         <HeroText
           headertext="Where Technology Meets the Future of Farming"
