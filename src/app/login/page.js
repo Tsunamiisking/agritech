@@ -12,7 +12,8 @@ const Page = () => {
     email: "",
     password: "",
   });
-  const [SignInWithEmailAndPassword, user, loading] = useSignInWithEmailAndPassword(auth);
+  const [SignInWithEmailAndPassword, user, loading] =
+    useSignInWithEmailAndPassword(auth);
   const router = useRouter();
 
   const [error, setError] = useState("");
@@ -43,21 +44,21 @@ const Page = () => {
       // Clear previous messages
       setError("");
       setSuccess("");
-  
+
       const res = await SignInWithEmailAndPassword(
         formData.email,
         formData.password
       );
-  
+
       // Clear form inputs
       formData.email = "";
       formData.password = "";
 
-      router.push("/marketplace");
-
-      // Success message
-      setSuccess("Successfully signed in!");
-
+      if (res.user) {
+        router.push("/marketplace");
+        // Success message
+        setSuccess("Successfully signed in!");
+      }
     } catch (e) {
       let customMessage;
       switch (e.code) {
@@ -74,7 +75,6 @@ const Page = () => {
     }
   };
 
-  
   if (loading) {
     return <Loading />;
   }
