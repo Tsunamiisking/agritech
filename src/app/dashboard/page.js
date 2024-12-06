@@ -3,6 +3,11 @@ import React from "react";
 import ProtectedRoute from "@/components/ProtectedRoutes";
 import SideNav from "@/components/SideNav";
 import { Bar } from "react-chartjs-2";
+import Loading from "@/components/Loading";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import CustomerType from "@/utils/CustomerType";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -125,6 +130,26 @@ const messages = [
 const Page = () => {
   const dummyLabels = ["Sales", "Stock"];
   const dummyData = [10, 15];
+
+  // const router = useRouter();
+  // const [isLoading, setIsLoading] = useState(true); 
+
+  // useEffect(() => {
+  //   const checkerFunc = async () => {
+  //     const {isFound } = await CustomerType("seller");
+  //     if (isFound) {
+  //       router.push("/marketplace");
+  //     } else {
+  //       setIsLoading(false); 
+  //     }
+  //   };
+
+  //   checkerFunc();
+  // }, [router, isLoading]);
+
+  // if (isLoading) {
+  //   return <Loading /> ;
+  // }
 
   return (
     <>

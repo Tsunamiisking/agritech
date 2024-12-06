@@ -116,9 +116,9 @@ const Page = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="grid grid-cols-2 w-full max-w-5xl px-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 w-full max-w-5xl px-8">
         <div
-          className="flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md"
+          className="hidden md:flex lg:flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md"
           style={img}
         >
           <div>
@@ -127,7 +127,7 @@ const Page = () => {
             </h2>
           </div>
         </div>
-        <div className="bg-white rounded-r-lg shadow-md p-8 flex items-center justify-center min-h-[30rem]">
+        <div className="bg-white rounded-r-lg shadow-md py-8 flex items-center justify-center min-h-[30rem]">
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Display error or success messages */}
             {error && <p className="text-red-500 text-center">{error}</p>}
