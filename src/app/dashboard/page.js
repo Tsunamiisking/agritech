@@ -7,6 +7,7 @@ import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import CustomerType from "@/utils/CustomerType";
+import { useUserRole } from "@/utils/CustomerType";
 
 import {
   Chart as ChartJS,
@@ -17,7 +18,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import NavItem from "@/components/NavItem";
+import { useAuthState } from "@/utils/auth";
 
 ChartJS.register(
   CategoryScale,
@@ -130,26 +133,16 @@ const messages = [
 const Page = () => {
   const dummyLabels = ["Sales", "Stock"];
   const dummyData = [10, 15];
-
-  // const router = useRouter();
-  // const [isLoading, setIsLoading] = useState(true); 
-
-  // useEffect(() => {
-  //   const checkerFunc = async () => {
-  //     const {isFound } = await CustomerType("seller");
-  //     if (isFound) {
-  //       router.push("/marketplace");
-  //     } else {
-  //       setIsLoading(false); 
-  //     }
-  //   };
-
-  //   checkerFunc();
-  // }, [router, isLoading]);
-
-  // if (isLoading) {
-  //   return <Loading /> ;
-  // }
+  const router = useRouter()
+  const { user, loading: authLoading } = useAuthState();
+  const { role, loading: roleLoading } = useUserRole(user?.uid);
+  
+  if (authLoading || roleLoading) {
+    return <Loading />;
+  } 
+  if (role === "buyer") {
+    router.push('/dashboard')
+  }
 
   return (
     <>
