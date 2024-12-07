@@ -27,42 +27,40 @@ function Product() {
   };
 
   return (
-  
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {products.map((items) => (
-          <div
-            key={items.id}
-            className="p-2 rounded-lg m-2 border-2 border-secondary flex flex-col items-center "
-          >
-            <Image
-              alt="product Image"
-              src={items.imageUrl}
-              width={200}
-              height={100}
-              className="h-24 w-28 rounded-md"
-            />
-            <p>{items.name}</p>
-            <p>#{items.price}</p>
-            <button
-              className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white"
-              onClick={() => openModal(items)}
-            >
-              More
-            </button>
-          </div>
-        ))}
-        {selectedProduct && (
-          <Modal
-            product={selectedProduct}
-            closeModal={closeModal}
-            filteredProducts={filteredProducts}
-            favorites={favorites}
-            setFavorites={setFavorites}
-            toggleFavorite={toggleFavorite}
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
+      {products.map((items) => (
+        <div
+          key={items.id}
+          className="p-2 rounded-lg m-5 lg:m-2 border-2 border-secondary flex flex-col items-center justify-around "
+        >
+          <Image
+            alt="product Image"
+            src={items.imageUrl}
+            width={200}
+            height={100}
+            className="h-24 w-28 rounded-md"
           />
-        )}
-      </div>
- 
+          <p>{items.name}</p>
+          <p>#{items.price}</p>
+          <button
+            className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white"
+            onClick={() => openModal(items)}
+          >
+            More
+          </button>
+        </div>
+      ))}
+      {selectedProduct && (
+        <Modal
+          product={selectedProduct}
+          closeModal={closeModal}
+          filteredProducts={filteredProducts}
+          favorites={favorites}
+          setFavorites={setFavorites}
+          toggleFavorite={toggleFavorite}
+        />
+      )}
+    </div>
   );
 }
 
