@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Modal from "./Modal";
 import products from "../data/products";
@@ -27,42 +26,40 @@ function Product() {
   };
 
   return (
-  
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {products.map((items) => (
-          <div
-            key={items.id}
-            className="p-2 rounded-lg m-2 border-2 border-secondary flex flex-col items-center "
-          >
-            <Image
-              alt="product Image"
-              src={items.imageUrl}
-              width={200}
-              height={100}
-              className="h-24 w-28 rounded-md"
-            />
-            <p>{items.name}</p>
-            <p>#{items.price}</p>
-            <button
-              className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white"
-              onClick={() => openModal(items)}
-            >
-              More
-            </button>
-          </div>
-        ))}
-        {selectedProduct && (
-          <Modal
-            product={selectedProduct}
-            closeModal={closeModal}
-            filteredProducts={filteredProducts}
-            favorites={favorites}
-            setFavorites={setFavorites}
-            toggleFavorite={toggleFavorite}
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-4">
+      {products.map((item) => (
+        <div
+          key={item.id}
+          className="p-4 rounded-lg border border-secondary shadow-md flex flex-col items-center bg-white hover:shadow-lg transition-shadow duration-300"
+        >
+          <Image
+            alt="Product Image"
+            src={item.imageUrl}
+            width={200}
+            height={200}
+            className="rounded-md h-24  "
           />
-        )}
-      </div>
- 
+          <p className="mt-2 font-semibold text-center">{item.name}</p>
+          <p className="text-gray-500 text-sm">#{item.price}</p>
+          <button
+            className="mt-4 px-4 py-2 rounded-lg bg-primary text-white hover:bg-secondary transition-colors duration-300"
+            onClick={() => openModal(item)}
+          >
+            More
+          </button>
+        </div>
+      ))}
+      {selectedProduct && (
+        <Modal
+          product={selectedProduct}
+          closeModal={closeModal}
+          filteredProducts={filteredProducts}
+          favorites={favorites}
+          setFavorites={setFavorites}
+          toggleFavorite={toggleFavorite}
+        />
+      )}
+    </div>
   );
 }
 

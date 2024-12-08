@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import { useEffect } from "react";
 import { BsCartPlus } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
@@ -18,16 +17,27 @@ function Modal({
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(storedFavorites);
   }, [setFavorites]);
+  const handleOverlayClick = (e) => {
+    if (e.target.id === "modal-overlay") {
+      closeModal();
+    }
+  };
+
   return (
-    <div className="m-auto   ml-72 lg:w-3/4 h-3/4 bg-primary fixed inset-0 bg-opacity-85 z-50 rounded-xl">
-      <button
-        onClick={closeModal}
-        className="absolute top-2 right-2 bg-white text-black rounded-circle p-3"
-      >
-        X
-      </button>
-      <div className="flex">
-        <div className="bg-white rounded-lg p-5  w-3/4 md:w-1/2 lg:w-1/3  my-24 ml-2">
+    <div
+      id="modal-overlay"
+      onClick={handleOverlayClick}
+      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4"
+    >
+      <div className="relative bg-primary rounded-xl shadow-lg w-full max-w-4xl md:flex md:space-x-4 p-6">
+        <button
+          onClick={closeModal}
+          className="absolute top-2 right-2 bg-white text-black rounded-full p-2"
+        >
+          X
+        </button>
+        {/* Product Details Section */}
+        <div className="bg-white rounded-lg p-5  md:w-48 md:h-80">
           <h2 className="text-lg font-bold">{product.name}</h2>
           <p className="text-sm text-gray-500">{product.category}</p>
           <p className="text-md mt-2">
@@ -39,9 +49,9 @@ function Modal({
             alt={product.name}
             width={300}
             height={200}
-            className="rounded-lg mt-4 h-28"
+            className="rounded-lg mt-4  h-24"
           />
-          <div className="mt-1 justify-evenly bg-secondary flex  p-1 rounded-ss-2xl rounded-ee-2xl items-center  text-2xl h-10 ">
+          <div className="mt-4 flex justify-around bg-secondary p-2 rounded-lg items-center text-2xl text-white">
             <button onClick={() => toggleFavorite(product)}>
               {favorites.some((fav) => fav.id === product.id) ? (
                 <AiFillHeart className="text-red-500" />
@@ -49,49 +59,46 @@ function Modal({
                 <AiOutlineHeart />
               )}
             </button>
-            <button className="">
-              <BsCartPlus className="" />
+            <button>
+              <BsCartPlus />
             </button>
             <button>
-              <IoCallOutline className="" />
+              <IoCallOutline />
             </button>
-            {/* <span className="flex flex-col -space-y-3 ">
-              <button>+</button>
-              <button>-</button>
-            </span> */}
           </div>
         </div>
-
-        <div className="w-full flex flex-col items-center">
-          <h3 className="text-xl font-semibold">
-            More Products in {product.category}
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-2 place-items-center">
-            {filteredProducts &&
-              filteredProducts.map((prod) => (
+        {/* Related Products Section */}
+        {filteredProducts && (
+          <div className="hidden md:block md:w-1/2">
+            <h3 className="text-xl font-semibold text-white text-center mb-4">
+              More Products in {product.category}
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {filteredProducts.map((prod) => (
                 <div
                   key={prod.id}
-                  className="p-2 rounded-lg m-2 border-2 bg-white w-40 border-secondary flex flex-col items-center"
+                  className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center"
                 >
                   <Image
                     alt="product Image"
                     src={prod.imageUrl}
-                    width={200}
+                    width={150}
                     height={100}
-                    className="h-24 w-28 rounded-md"
+                    className="rounded-md h-24"
                   />
-                  <p>{prod.name}</p>
-                  <p>#{prod.price}</p>
+                  <p className="mt-2 text-sm font-semibold">{prod.name}</p>
+                  <p className="text-gray-500 text-sm">#{prod.price}</p>
                   <button
-                    className="rounded-lg bg-primary hover:bg-secondary ease-in px-5 py-2 mt-2 text-white"
+                    className="mt-4 px-3 py-1 rounded-lg bg-primary text-white hover:bg-secondary transition duration-300"
                     onClick={() => openModal(prod)}
                   >
                     More
                   </button>
                 </div>
               ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
