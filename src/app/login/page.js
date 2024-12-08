@@ -55,7 +55,7 @@ const Page = () => {
       formData.password = "";
 
       if (res.user) {
-        router.push("/marketplace");
+        router.push("/dashboard");
         // Success message
         setSuccess("Successfully signed in!");
       }
@@ -88,11 +88,8 @@ const Page = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="grid grid-cols-2 w-full max-w-5xl px-8">
-        <div
-          className="flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md"
-          style={img}
-        >
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 w-full max-w-5xl px-8">
+        <div className="hidden md:flex lg:flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md " style={img}>
           <div>
             <h2 className="text-white text-3xl font-bold text-center mb-2">
               Welcome Back!
