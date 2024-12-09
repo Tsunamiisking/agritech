@@ -150,7 +150,7 @@ const Page = () => {
         <SideNav
           option1={"Dashboard"}
           option2={"Item History"}
-          option3={"Add Item"}
+          option3={"Upload Item"}
           userType={"Seller"}
         />
         <div className="lg:ml-64 lg:px-5 flex flex-col items-center w-screen ">
