@@ -138,7 +138,7 @@ const Page = () => {
   const { user, loading: authLoading } = useAuthState();
   const { role, loading: roleLoading } = useUserRole(user?.uid);
   console.log(role)
-  if (authLoading || roleLoading) {
+  if (authLoading && roleLoading) {
     return <Loading />;
   } 
   if (role === "buyer") {
@@ -152,7 +152,7 @@ const Page = () => {
           option1={"Dashboard"}
           option2={"Item History"}
           option3={"Add Item"}
-          userType={"Seller"}
+          userType={role}
         />
         <div className="lg:ml-64 lg:px-5 flex flex-col items-center w-screen ">
           <h3 className="mr-auto font-bold mt-2">Good Morning, Douglas</h3>
