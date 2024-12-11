@@ -133,16 +133,16 @@ const messages = [
 const Page = () => {
   const dummyLabels = ["Sales", "Stock"];
   const dummyData = [10, 15];
-  const router = useRouter()
-  
+  const router = useRouter();
+
   const { user, loading: authLoading } = useAuthState();
   const { role, loading: roleLoading } = useUserRole(user?.uid);
-  console.log(role)
+  console.log(role);
   if (authLoading && roleLoading) {
     return <Loading />;
   }
   if (role === "buyer") {
-    router.push('/marketplace')
+    router.push("/marketplace");
   }
 
   return (
@@ -155,15 +155,17 @@ const Page = () => {
           userType={role}
         />
         <div className="lg:ml-64 lg:px-5 flex flex-col items-center w-screen ">
-          <h3 className="mr-auto font-bold mt-2">Good Morning, Douglas</h3>
+          <h3 className=" m-auto lg:mr-auto font-bold mt-2">
+            Good Morning, Douglas
+          </h3>
 
-          <div className="flex flex-row mt-10  mb-10 border-b-2 border-secondary">
+          <div className="flex flex-col md:flex-row lg:flex-row mt-10  mb-10 lg:border-b-2 border-secondary">
             <div className="">
               <BarChart data={dummyData} labels={dummyLabels} />
             </div>
-            <div className="border-l-2 border-secondary ml-auto flex flex-col p-2 rounded-lg w-6/12 ">
-              <p className="mx-auto"> Messages</p>
-              <div className="flex flex-col">
+            <div className="border-l-2 border-b-2 border-secondary lg:ml-auto flex flex-col p-2 rounded-lg md:w-6/12 lg:w-6/12 ">
+              <p className="mx-auto underline "> Messages</p>
+              <div className="flex flex-col h-32 lg:h-auto overflow-y-scroll">
                 {messages.map((message) => (
                   <span key={message.id} className="border-b-2 pb-2">
                     <span className=" flex font-bold">
@@ -178,7 +180,7 @@ const Page = () => {
           </div>
 
           <div className="flex flex-col border-2 border-secondary rounded-xl">
-            <p className="mx-auto">Recent</p>
+            <p className="mx-auto">Recent Product Upload</p>
             <div>
               {item.map((item) => (
                 <div key={item.id} className="p-2 border-b-2">
