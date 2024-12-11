@@ -134,14 +134,15 @@ const Page = () => {
   const dummyLabels = ["Sales", "Stock"];
   const dummyData = [10, 15];
   const router = useRouter()
+  
   const { user, loading: authLoading } = useAuthState();
   const { role, loading: roleLoading } = useUserRole(user?.uid);
-  
-  if (authLoading || roleLoading) {
+  console.log(role)
+  if (authLoading && roleLoading) {
     return <Loading />;
-  } 
+  }
   if (role === "buyer") {
-    router.push('/dashboard')
+    router.push('/marketplace')
   }
 
   return (
@@ -150,8 +151,8 @@ const Page = () => {
         <SideNav
           option1={"Dashboard"}
           option2={"Item History"}
-          option3={"Upload Item"}
-          userType={"Seller"}
+          option3={"Add Item"}
+          userType={role}
         />
         <div className="lg:ml-64 lg:px-5 flex flex-col items-center w-screen ">
           <h3 className="mr-auto font-bold mt-2">Good Morning, Douglas</h3>
@@ -191,7 +192,7 @@ const Page = () => {
       </div>
     </>
   );
-}
+};
 
 export default function ProtectedDashboard() {
   return (
