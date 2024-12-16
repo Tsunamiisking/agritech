@@ -13,7 +13,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { GrLogout } from "react-icons/gr";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai"; 
 
 const Page = () => {
   return (
@@ -21,18 +21,22 @@ const Page = () => {
       <div className="flex px-5 lg:px-0">
         <SideNav
           userType="Buyer"
-          options={[
-            { name: "Marketplace", link: "/marketplace", icon: <CiShop /> },
-            { name: "Orders", link: "/orders", icon: <RiFileList3Line /> },
-            { name: "Cart", link: "/cart", icon: <CiShoppingCart /> },
-            { name: "Favorites", link: "/favorite", icon: <AiOutlineHeart /> },
-            {
-              name: "Settings",
-              link: "/settings",
-              icon: <IoSettingsOutline />,
-            },
-            { name: "Logout", link: "/logout", icon: <GrLogout /> },
-          ]}
+          option1="MarketPlace"
+          option2="Order History"
+          option3="Cart"
+          option4="Favourite"
+          // options={[
+          //   { name: "Marketplace", link: "/marketplace", icon: <CiShop /> },
+          //   { name: "Orders", link: "/orders", icon: <RiFileList3Line /> },
+          //   { name: "Cart", link: "/cart", icon: <CiShoppingCart /> },
+          //   { name: "Favorites", link: "/favorite", icon: <AiOutlineHeart /> },
+          //   {
+          //     name: "Settings",
+          //     link: "/settings",
+          //     icon: <IoSettingsOutline />,
+          //   },
+          //   { name: "Logout", link: "/logout", icon: <GrLogout /> },
+          // ]}
         />
 
         <Marketplace />
