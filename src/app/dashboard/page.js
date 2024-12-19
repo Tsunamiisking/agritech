@@ -133,16 +133,21 @@ const messages = [
 const Page = () => {
   const dummyLabels = ["Sales", "Stock"];
   const dummyData = [10, 15];
-  const router = useRouter()
-  
+  const router = useRouter();
+
   const { user, loading: authLoading } = useAuthState();
   const { role, loading: roleLoading } = useUserRole(user?.uid);
-  console.log(role)
+  // const [staterole, setStateRole] = useState('')
   if (authLoading && roleLoading) {
     return <Loading />;
-  } 
-  if (role === "buyer") {
-    router.push('/marketplace')
+  }
+  // useEffect(() => {
+
+  // }, [roleLoading])
+  if (!roleLoading) {
+    if (role === "buyer") {
+      router.push('/marketplace')
+    }
   }
 
   return (
@@ -192,7 +197,7 @@ const Page = () => {
       </div>
     </>
   );
-}
+};
 
 export default function ProtectedDashboard() {
   return (
