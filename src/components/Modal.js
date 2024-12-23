@@ -4,6 +4,7 @@ import Image from "next/image";
 import { BsCartPlus } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 function Modal({
   product,
@@ -13,6 +14,7 @@ function Modal({
   setFavorites,
   toggleFavorite,
 }) {
+  const router = useRouter();
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(storedFavorites);
@@ -37,13 +39,13 @@ function Modal({
           X
         </button>
         {/* Product Details Section */}
-        <div className="bg-white rounded-lg p-5  md:w-48 md:h-80">
+        <div className="bg-white rounded-lg p-5  md:w-48 md:h-80 lg:h-80">
           <h2 className="text-lg font-bold">{product.name}</h2>
           <p className="text-sm text-gray-500">{product.category}</p>
           <p className="text-md mt-2">
             Price: #{product.price} {product.currency}
           </p>
-          <p className="text-sm mt-2">{product.description}</p>
+          <p className="text-xs font-thin mt-2">{product.description}</p>
           <Image
             src={product.imageUrl}
             alt={product.name}
@@ -59,7 +61,7 @@ function Modal({
                 <AiOutlineHeart />
               )}
             </button>
-            <button>
+            <button onClick={() => router.push("/checkout")}>
               <BsCartPlus />
             </button>
             <button>
@@ -69,15 +71,15 @@ function Modal({
         </div>
         {/* Related Products Section */}
         {filteredProducts && (
-          <div className="hidden md:block md:w-1/2">
+          <div className="hidden md:block md:w-10/12">
             <h3 className="text-xl font-semibold text-white text-center mb-4">
               More Products in {product.category}
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-2 h-96 overflow-y-scroll">
               {filteredProducts.map((prod) => (
                 <div
                   key={prod.id}
-                  className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center"
+                  className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center h-56"
                 >
                   <Image
                     alt="product Image"
