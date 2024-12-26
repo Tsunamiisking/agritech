@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, firestore } from "../firebase/config";
 import { useRouter } from "next/navigation";
-import { addUserToFirestore } from "../firebase/db";
 import { updateProfile } from "firebase/auth";
 import Loading from "@/components/Loading";
 import { addDoc, collection } from "firebase/firestore";
