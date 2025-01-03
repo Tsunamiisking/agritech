@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ProtectedRoute from "@/components/ProtectedRoutes";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/SideNavSeller";
 import { Bar } from "react-chartjs-2";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
