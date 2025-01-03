@@ -55,7 +55,7 @@ const Page = () => {
       formData.password = "";
 
       if (res.user) {
-        router.push("/dashboard");
+        router.push("/marketplace");
         // Success message
         setSuccess("Successfully signed in!");
       }

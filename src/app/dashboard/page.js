@@ -137,12 +137,12 @@ const Page = () => {
 
   const { user, loading: authLoading } = useAuthState();
   const { role, loading: roleLoading } = useUserRole(user?.uid);
-  console.log(role);
+  console.log(role)
   if (authLoading && roleLoading) {
     return <Loading />;
-  }
+  } 
   if (role === "buyer") {
-    router.push("/marketplace");
+    router.push('/marketplace')
   }
 
   return (
