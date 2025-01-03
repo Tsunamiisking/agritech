@@ -45,17 +45,17 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
                 <RiFileList3Line /> {option2}
               </span>
             </NavItem>
-            <NavItem href={"/"}>
+            <NavItem href={"/buyer/cart"}>
               <span className="flex items-center">
                 <CiShoppingCart /> {option3}
               </span>
             </NavItem>
-            <NavItem href={"/favorite"}>
+            <NavItem href={"/buyer/favorite"}>
               <span className="flex items-center">
                 <AiOutlineHeart /> {option4}
               </span>
             </NavItem>
-            <NavItem href={"/"}>
+            <NavItem href={"/buyer/settings"}>
               <span className="flex items-center">
                 <IoSettingsOutline /> Settings
               </span>

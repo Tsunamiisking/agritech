@@ -35,7 +35,7 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
         </div>
         <div className="bg-secondary h-full flex justify-center rounded-br-xl rounded-tr-full py-20">
           <nav className="flex flex-col space-y-3 text-white rounded-br-xl">
-            <NavItem href={"marketplace"}>
+            <NavItem href={"buyer/marketplace"}>
               <span className="flex items-center">
                 <CiShop /> {option1}
               </span>
@@ -50,7 +50,7 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
                 <CiShoppingCart /> {option3}
               </span>
             </NavItem>
-            <NavItem href={"/favorite"}>
+            <NavItem href={"buyer"}>
               <span className="flex items-center">
                 <AiOutlineHeart /> {option4}
               </span>
