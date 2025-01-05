@@ -1,5 +1,6 @@
 import React from "react";
 import SideNav from "@/components/SideNav";
+import CartItems from "@/components/CartItems";
 
 function page() {
   return (
@@ -13,21 +14,7 @@ function page() {
       />
       <div>
         <header>Cart</header>
-        <div>
-            {cartItems.length === 0 ? ( <p>Your cart is empty</p>) : (
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            )}
-        </div>
+       <CartItems/>
       </div>
     </div>
   );
