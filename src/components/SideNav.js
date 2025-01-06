@@ -9,9 +9,13 @@ import { GrLogout } from "react-icons/gr";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
-import NavItem from "./NavItem" 
 
-function SideNav({ userType, option1, option2, option3, option4 }) {
+import NavItem from "./NavItem";
+import { auth } from "@/app/firebase/config";
+import { useSignOut } from "react-firebase-hooks/auth";
+
+function SideNav({ username, userType, option1, option2, option3, option4 }) {
+  const [SignOut, user ] = useSignOut(auth)
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
@@ -28,7 +32,7 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
             alt="profile-picture"
             className="rounded-circle bg-secondary"
           />
-          <h3 className="font-extrabold">AllenDouglas</h3>
+        <h3 className="font-extrabold">{username}</h3>
           <h4 className="bg-secondary py-1 px-6 rounded-lg font-semibold">
             {userType}
           </h4>
@@ -127,7 +131,7 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
                 </span>
               </NavItem>
               <NavItem href={"/"}>
-                <span className="flex items-center">
+                <span onClick={SignOut} className="flex items-center">
                   <GrLogout /> Logout
                 </span>
               </NavItem>
