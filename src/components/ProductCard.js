@@ -71,7 +71,7 @@ function Modal({
           </div>
         </div>
         {/* Related Products Section */}
-       <RelatedProducts filteredProducts={filteredProducts}/>
+       <RelatedProducts filteredProducts={filteredProducts} product={product}/>
       </div>
     </div>
   );
