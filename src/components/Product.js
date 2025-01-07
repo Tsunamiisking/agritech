@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Modal from "./ProductCard";
+import ProductCard from "./ProductCard";
 import products from "../data/products";
+
 
 function Product() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -50,7 +51,7 @@ function Product() {
         </div>
       ))}
       {selectedProduct && (
-        <Modal
+        <ProductCard
           product={selectedProduct}
           closeModal={closeModal}
           filteredProducts={filteredProducts}

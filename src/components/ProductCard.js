@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/cartSlice";
 import Image from "next/image";
 import { BsCartPlus } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
@@ -7,7 +9,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import RelatedProducts from "./RelatedProducts";
 
-function Modal({
+function ProductCard({
   product,
   closeModal,
   filteredProducts,
@@ -15,6 +17,13 @@ function Modal({
   setFavorites,
   toggleFavorite,
 }) {
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart =()=> {
+    dispatch(addToCart(product));
+  }
+
   const router = useRouter();
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -62,7 +71,7 @@ function Modal({
                 <AiOutlineHeart />
               )}
             </button>
-            <button onClick={() => router.push("/checkout")}>
+            <button onClick={handleAddToCart}>
               <BsCartPlus />
             </button>
             <button>
@@ -77,4 +86,4 @@ function Modal({
   );
 }
 
-export default Modal;
+export default ProductCard;
