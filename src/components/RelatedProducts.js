@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-function RelatedProducts({filteredProducts}) {
+function RelatedProducts({filteredProducts, product}) {
   return (
     <div>
           {filteredProducts && (

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Modal from "./Modal";
+import Modal from "./ProductCard";
 import products from "../data/products";
 
 function Product() {
