@@ -13,7 +13,7 @@ function page() {
         userType={"Buyer"}
       />
       <div>
-        <header>Cart</header>
+        <header>Your Cart</header>
        <CartItems/>
       </div>
     </div>
