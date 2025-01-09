@@ -1,20 +1,30 @@
+"use client";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "@/store/cartSlice";
+import Loading from "./Loading";
 
 function CartItems() {
+
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  if (!cart || !cart.items) {
+    return <Loading/>;
+  }
+
   return (
     <div>
       {cart.items.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
         cart.items.map((item) => (
-          <div key={item.id}>
+          <div className="flex bg-secondary p-2 mb-2 "  key={item.id}>
             <h4>{item.name}</h4>
             <p>Price: {item.price}</p>
-            <p>Total Price: ${item.totalPrice}</p>
             <p>Quantity: {item.quantity}</p>
-            <button onClick={() => dispatch(removeFromCart(item.id))}>
+            <p>Total Price: ${item.totalPrice}</p>
+            <button className="bg-primary rounded-md p-5 h-5" onClick={() => dispatch(removeFromCart(item.id))}>
               Remove
             </button>
             <input
@@ -58,7 +68,7 @@ function CartItems() {
         // </div>
       )}
       <h3>Total Items: {cart.totalQuantity}</h3>
-      <h3>Total Price: {atRule.totalPrice.toFixed(2)}</h3>
+      <h3>Total Price: {cart.totalPrice.toFixed(2)}</h3>
     </div>
   );
 }

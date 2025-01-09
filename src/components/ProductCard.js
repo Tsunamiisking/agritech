@@ -22,6 +22,8 @@ function ProductCard({
 
   const handleAddToCart =()=> {
     dispatch(addToCart(product));
+    alert("item added to cart succesfully")
+    closeModal();
   }
 
   const router = useRouter();

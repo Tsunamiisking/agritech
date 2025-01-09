@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import ReduxProvider from "@/components/ReduxProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "AgriTech Project",
-  description: "Agritech startup agriculture project",
+  title: "Agri-Hub",
+  description: "A platform where people buy farm produce directly from farmers",
 };
 
 export default function RootLayout({ children }) {
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );
