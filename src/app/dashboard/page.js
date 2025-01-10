@@ -142,7 +142,7 @@ const Page = () => {
     return <Loading />;
   } 
   if (role === "buyer") {
-    router.push('/marketplace')
+    router.push('/buyer/marketplace')
   }
 
   return (

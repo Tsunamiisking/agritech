@@ -1,12 +1,15 @@
 "use client";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/cartSlice";
 import Image from "next/image";
 import { BsCartPlus } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import RelatedProducts from "./RelatedProducts";
 
-function Modal({
+function ProductCard({
   product,
   closeModal,
   filteredProducts,
@@ -14,6 +17,15 @@ function Modal({
   setFavorites,
   toggleFavorite,
 }) {
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart =()=> {
+    dispatch(addToCart(product));
+    alert("item added to cart succesfully")
+    closeModal();
+  }
+
   const router = useRouter();
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -61,7 +73,7 @@ function Modal({
                 <AiOutlineHeart />
               )}
             </button>
-            <button onClick={() => router.push("/checkout")}>
+            <button onClick={handleAddToCart}>
               <BsCartPlus />
             </button>
             <button>
@@ -70,40 +82,10 @@ function Modal({
           </div>
         </div>
         {/* Related Products Section */}
-        {filteredProducts && (
-          <div className="hidden md:block md:w-10/12">
-            <h3 className="text-xl font-semibold text-white text-center mb-4">
-              More Products in {product.category}
-            </h3>
-            <div className="grid grid-cols-3 gap-2 h-96 overflow-y-scroll">
-              {filteredProducts.map((prod) => (
-                <div
-                  key={prod.id}
-                  className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center h-56"
-                >
-                  <Image
-                    alt="product Image"
-                    src={prod.imageUrl}
-                    width={150}
-                    height={100}
-                    className="rounded-md h-24"
-                  />
-                  <p className="mt-2 text-sm font-semibold">{prod.name}</p>
-                  <p className="text-gray-500 text-sm">#{prod.price}</p>
-                  <button
-                    className="mt-4 px-3 py-1 rounded-lg bg-primary text-white hover:bg-secondary transition duration-300"
-                    onClick={() => openModal(prod)}
-                  >
-                    More
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+       <RelatedProducts filteredProducts={filteredProducts} product={product}/>
       </div>
     </div>
   );
 }
 
-export default Modal;
+export default ProductCard;
