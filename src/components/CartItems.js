@@ -5,70 +5,82 @@ import { removeFromCart, updateQuantity } from "@/store/cartSlice";
 import Loading from "./Loading";
 
 function CartItems() {
-
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product));
+  };
+
   if (!cart || !cart.items) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
-    <div>
-      {cart.items.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        cart.items.map((item) => (
-          <div className="flex bg-secondary p-2 mb-2 "  key={item.id}>
-            <h4>{item.name}</h4>
-            <p>Price: {item.price}</p>
-            <p>Quantity: {item.quantity}</p>
-            <p>Total Price: ${item.totalPrice}</p>
-            <button className="bg-primary rounded-md p-5 h-5" onClick={() => dispatch(removeFromCart(item.id))}>
-              Remove
-            </button>
-            <input
-              type="number"
-              value={item.quantity}
-              onChange={(e) =>
-                dispatch(
-                  updateQuantity({ id: item.id, quantity: +e.target.value })
-                )
-              }
-            />
+    <div className="flex flex-col lg:flex-row lg:gap-6">
+      {/* Cart Items Section */}
+      <div className=" mx-14 w-full  ">
+
+        {cart.items.length > 0 && (
+          <div className="grid grid-cols-5 gap-4 bg-primary text-white mb-2 p-4 rounded-t-lg font-bold">
+            <p>Product</p>
+            <p>Price</p>
+            <p>Qty</p>
+            <p>Total Price</p>
+            <p>Actions</p>
           </div>
-        ))
-        // <div>
-        //   <table>
-        //     <thead>
-        //       <tr>
-        //         <th>Product Name</th>
-        //         <th>Qty</th>
-        //         <th>Price</th>
-        //         <th>Rate</th>
-        //       </tr>
-        //     </thead>
-        //     <tbody>
-        //       {cartItems.map((items, index) => {
-        //         return (
-        //           <tr key={index}>
-        //             <td>{items.name}</td>
-        //             <td>{items.qty}</td>
-        //             <td>{items.price}</td>
-        //             <td>{items.price * items.qty}</td>
-        //             <td>
-        //               {" "}
-        //               <button>Remove From Cart</button>
-        //             </td>
-        //           </tr>
-        //         );
-        //       })}
-        //     </tbody>
-        //   </table>
-        // </div>
-      )}
-      <h3>Total Items: {cart.totalQuantity}</h3>
-      <h3>Total Price: {cart.totalPrice.toFixed(2)}</h3>
+        )}
+
+        {cart.items.length === 0 ? (
+          <p className="text-gray-500 mt-4">Your cart is empty</p>
+        ) : (
+          cart.items.map((item) => (
+            <div
+              className="grid grid-cols-5 gap-4 bg-secondary p-4 mb-2 rounded-lg items-center shadow-sm hover:shadow-md transition-shadow duration-300"
+              key={item.id}
+            >
+              <h4 className="text-sm font-medium text-gray-700">{item.name}</h4>
+              <p className="text-sm text-gray-600">${item.price.toFixed(2)}</p>
+              <input
+                className="w-16 border border-gray-300 outline-none rounded-md text-center focus:ring-2 focus:ring-primary"
+                type="number"
+                value={item.quantity}
+                min="1"
+                onChange={(e) =>
+                  dispatch(
+                    updateQuantity({ id: item.id, quantity: +e.target.value })
+                  )
+                }
+              />
+              <p className="text-sm font-semibold text-gray-700">
+                ${item.totalPrice}
+              </p>
+              <button
+                className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-300"
+                onClick={() => handleRemoveFromCart(item.id)}
+              >
+                Remove
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Checkout Section */}
+      <div className="lg:w-72 h-screen bg-primary fixed right-0 top-0 p-6 flex flex-col justify-between">
+        <div>
+          <h4 className="text-center text-lg font-semibold mb-4">Cart Summary</h4>
+          <p className="mb-2 text-sm text-gray-700">
+            Total Items: {cart.totalQuantity}
+          </p>
+          <p className="mb-6 text-sm text-gray-700">
+            Total Price: ${cart.totalPrice.toFixed(2)}
+          </p>
+        </div>
+        <button className="w-full bg-secondary text-white py-3 rounded-md hover:bg-primary-dark transition-colors duration-300">
+          Proceed to Checkout
+        </button>
+      </div>
     </div>
   );
 }
