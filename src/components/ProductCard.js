@@ -84,7 +84,7 @@ function ProductCard({
         {/* Related Products Section */}
        <RelatedProducts filteredProducts={filteredProducts} product={product}/>
       </div>
-      <RelatedProducts/>
+
     </div>
   );
 }
