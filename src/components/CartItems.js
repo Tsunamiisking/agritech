@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "@/store/cartSlice";
 import Loading from "./Loading";
+import RelatedProducts from "./RelatedProducts";
 
 function CartItems() {
   const cart = useSelector((state) => state.cart);
@@ -81,6 +82,7 @@ function CartItems() {
           Proceed to Checkout
         </button>
       </div>
+      <RelatedProducts/>
     </div>
   );
 }
