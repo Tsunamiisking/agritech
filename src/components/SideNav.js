@@ -52,12 +52,12 @@ function SideNav({
         </div>
         <div className="bg-secondary h-full flex justify-center rounded-br-xl rounded-tr-full py-20">
           <nav className="flex flex-col space-y-3 text-white rounded-br-xl">
-            <NavItem href={"/marketplace"}>
+            <NavItem href={"/buyer/marketplace"}>
               <span className="flex items-center">
                 <CiShop /> {option1}
               </span>
             </NavItem>
-            <NavItem href={"/orders"}>
+            <NavItem href={"/productupload"}>
               <span className="flex items-center">
                 <RiFileList3Line /> {option2}
               </span>
@@ -130,7 +130,7 @@ function SideNav({
           </div>
           <div className="bg-secondary h-full flex justify-center py-20">
             <nav className="flex flex-col space-y-3 text-white">
-              <NavItem href={"/marketplace"}>
+              <NavItem href={"/buyer/marketplace"}>
                 <span className="flex items-center">
                   <CiShop /> {option1}
                 </span>
