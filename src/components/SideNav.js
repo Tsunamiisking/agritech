@@ -90,7 +90,7 @@ function SideNav({
       </div>
 
       {/* Mobile Sidebar */}
-      <div className="lg:hidden">
+      <div className="md:hidden lg:hidden">
         <button
           onClick={toggleMobileMenu}
           className="fixed top-4 left-4 bg-primary text-white p-3 rounded-full shadow-lg z-50"
