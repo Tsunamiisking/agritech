@@ -11,7 +11,7 @@ import { MdClose } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import NavItem from "./NavItem" 
 
-function SideNav({ userType, option1, option2, option3, option4 }) {
+function SideNavSeller({ userType, option1, option2, option3, option4 }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
@@ -139,5 +139,5 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
   );
 }
 
-export default SideNav;
+export default SideNavSeller;
 
