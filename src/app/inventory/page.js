@@ -1,11 +1,16 @@
 import React from 'react'
 import SideNavSeller from '@/components/SideNavSeller'
+import InventoryItem from '@/components/InventoryItem'
 
 function page() {
   return (
     <>
     <SideNavSeller/>
-    <div>My inventory</div>
+    <div className='md:ml-64 lg:ml-64'>My inventory
+      <InventoryItem/>
+    </div>
+    
+
     </>
   )
 }
