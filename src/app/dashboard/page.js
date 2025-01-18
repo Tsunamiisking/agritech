@@ -154,7 +154,7 @@ const Page = () => {
           option3={"Add Item"}
           userType={role}
         />
-        <div className="lg:ml-64 lg:px-5 flex flex-col items-center w-screen ">
+        <div className="lg:ml-64 md:ml-64 lg:px-5 flex flex-col items-center w-screen ">
           <h3 className=" m-auto lg:mr-auto font-bold mt-2">
             Good Morning, Douglas
           </h3>
