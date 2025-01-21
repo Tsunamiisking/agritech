@@ -2,24 +2,11 @@
 import React from "react";
 import ProtectedRoute from "@/components/ProtectedRoutes";
 import SideNav from "@/components/SideNavSeller";
-import { Bar } from "react-chartjs-2";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import CustomerType from "@/utils/CustomerType";
 import { useUserRole } from "@/utils/CustomerType";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
 
-import NavItem from "@/components/NavItem";
 import { useAuthState } from "@/utils/auth";
 import SellersDashboard from "@/components/SellersDashboard";
 
