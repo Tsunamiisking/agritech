@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import {item,messages} from "@/data/products";
 
 
 
@@ -55,70 +56,7 @@ const BarChart = ({ data, labels }) => {
 
   return <Bar data={chartData} options={options} />;
 };
-const item = [
-  {
-    id: "FP001",
-    itemName: "Tomatoes",
-    description:
-      "Fresh organic tomatoes harvested from local farms, ideal for salads and cooking.",
-  },
-  {
-    id: "FP002",
-    itemName: "Maize",
-    description:
-      "High-quality dried maize grains, perfect for flour production and animal feed.",
-  },
-  {
-    id: "FP003",
-    itemName: "Carrots",
-    description:
-      "Crisp, sweet carrots grown in nutrient-rich soil, ideal for raw consumption or cooking.",
-  },
-  {
-    id: "FP004",
-    itemName: "Potatoes",
-    description:
-      "Freshly harvested potatoes, suitable for boiling, frying, or making mashed potatoes.",
-  },
-  {
-    id: "FP005",
-    itemName: "Cabbage",
-    description:
-      "Large, green cabbages perfect for salads, coleslaw, and stir-fry dishes.",
-  },
-];
 
-const messages = [
-  {
-    name: "John Doe",
-    id: "ORD123456",
-    messageContent:
-      "I need a quick update on the delivery status of my fertilizer order.",
-  },
-  {
-    name: "Jane Smith",
-    id: "ORD987654",
-    messageContent:
-      "Can you confirm if the tractor parts I ordered are in stock?",
-  },
-  {
-    name: "Samuel Brown",
-    id: "ORD112233",
-    messageContent:
-      "The seeds I received were damaged. Please assist with a replacement.",
-  },
-  {
-    name: "Emily Davis",
-    id: "ORD445566",
-    messageContent: "Do you offer bulk discounts for pesticides?",
-  },
-  {
-    name: "Michael Johnson",
-    id: "ORD778899",
-    messageContent:
-      "Can I change the delivery address for my irrigation equipment?",
-  },
-];
 
 function SellersDashboard() {
   const dummyLabels = ["Sales", "Stock"];
