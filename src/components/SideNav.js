@@ -54,25 +54,25 @@ function SideNav({
           <nav className="flex flex-col space-y-3 text-white rounded-br-xl">
             <NavItem href={"/buyer/marketplace"}>
               <span className="flex items-center">
-                <CiShop /> {option1}
-              </span>
-            </NavItem>
-            <NavItem href={"/productupload"}>
-              <span className="flex items-center">
-                <RiFileList3Line /> {option2}
+                <CiShop /> MarketPlace
               </span>
             </NavItem>
             <NavItem href={"/buyer/cart"}>
               <span className="flex items-center">
-                <CiShoppingCart /> {option3}
+                <CiShoppingCart /> Cart
+              </span>
+            </NavItem>
+            <NavItem href={"/productupload"}>
+              <span className="flex items-center">
+                <RiFileList3Line /> Purchase History
               </span>
             </NavItem>
             <NavItem href={"/buyer/favorite"}>
               <span className="flex items-center">
-                <AiOutlineHeart /> {option4}
+                <AiOutlineHeart /> Favorite
               </span>
             </NavItem>
-            <NavItem href={"/buyer/settings"}>
+            <NavItem href={"/seller/dashboard"}>
               <span className="flex items-center">
                 <IoSettingsOutline /> Settings
               </span>
@@ -132,22 +132,22 @@ function SideNav({
             <nav className="flex flex-col space-y-3 text-white">
               <NavItem href={"/buyer/marketplace"}>
                 <span className="flex items-center">
-                  <CiShop /> {option1}
-                </span>
-              </NavItem>
-              <NavItem href={"/orders"}>
-                <span className="flex items-center">
-                  <RiFileList3Line /> {option2}
+                  <CiShop /> MarketPlace
                 </span>
               </NavItem>
               <NavItem href={"/buyer/cart"}>
                 <span className="flex items-center">
-                  <CiShoppingCart /> {option3}
+                  <CiShoppingCart /> Cart
+                </span>
+              </NavItem>
+              <NavItem href={"/orders"}>
+                <span className="flex items-center">
+                  <RiFileList3Line /> Purchase History
                 </span>
               </NavItem>
               <NavItem href={"/buyer/favorite"}>
                 <span className="flex items-center">
-                  <AiOutlineHeart /> {option4}
+                  <AiOutlineHeart /> Favorite
                 </span>
               </NavItem>
               <NavItem href={"/buyer/settings"}>
