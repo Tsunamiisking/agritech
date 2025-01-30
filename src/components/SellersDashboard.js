@@ -9,7 +9,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import {item,messages} from "@/data/products";
+import item from "@/data/products";
+import messages from "@/data/products";
 
 
 
