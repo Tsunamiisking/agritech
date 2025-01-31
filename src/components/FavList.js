@@ -36,7 +36,7 @@ function FavList() {
                 <h3 className="text-lg font-medium">{item.name}</h3>
                 <p className="text-gray-500 mt-1">#{item.price}</p>
               </div>
-              <div className="mt-3 flex gap-2 lg:w-full justify-center">
+              <div className="mt-3 ml-1 flex gap-2 lg:w-full justify-center">
                 <button
                   onClick={() => {
                     const updatedFavorites = favorites.filter(
@@ -48,7 +48,7 @@ function FavList() {
                       JSON.stringify(updatedFavorites)
                     );
                   }}
-                  className="bg-secondary text-white px-3 py-1 rounded hover:bg-opacity-90"
+                  className=" bg-secondary text-white px-3 py-1 rounded hover:bg-opacity-90"
                 >
                   Remove
                 </button>

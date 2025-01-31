@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ProtectedRoute from "@/components/ProtectedRoutes";
-import SideNav from "@/components/SideNavSeller";
+import SideNavSeller from "@/components/SideNavSeller";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
 import { useUserRole } from "@/utils/CustomerType";
@@ -29,10 +29,7 @@ const Page = () => {
   return (
     <>
       <div className="flex px-5 lg:px-0 font-roboto">
-        <SideNav
-          option1={"Dashboard"}
-          option2={"Item History"}
-          option3={"Add Item"}
+        <SideNavSeller
           userType={role}
         />
         <SellersDashboard/>
