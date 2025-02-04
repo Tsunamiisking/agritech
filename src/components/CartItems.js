@@ -2,10 +2,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "@/store/cartSlice";
+import { useRouter } from "next/navigation";
+
 import Loading from "./Loading";
 import RelatedProducts from "./RelatedProducts";
 
 function CartItems() {
+  const router = useRouter();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -19,9 +22,7 @@ function CartItems() {
 
   return (
     <div className="flex flex-col lg:flex-row lg:gap-6">
-      {/* Cart Items Section */}
       <div className="  lg:mx-14 lg:w-full  ">
-
         {cart.items.length > 0 && (
           <div className="grid grid-cols-5 gap-4 bg-primary text-white mb-2 p-4 rounded-t-lg font-bold">
             <p>Product</p>
@@ -70,7 +71,9 @@ function CartItems() {
       {/* Checkout Section */}
       <div className="lg:w-72 lg:h-screen w-screen bg-primary fixed bottom-0 lg:right-0 lg:top-0 p-6 flex flex-col justify-between">
         <div>
-          <h4 className="text-center text-lg font-semibold mb-4">Cart Summary</h4>
+          <h4 className="text-center text-lg font-semibold mb-4">
+            Cart Summary
+          </h4>
           <p className="mb-2 text-sm text-gray-700">
             Total Items: {cart.totalQuantity}
           </p>
@@ -78,11 +81,14 @@ function CartItems() {
             Total Price: ${cart.totalPrice.toFixed(2)}
           </p>
         </div>
-        <button className="w-full bg-secondary text-white py-3 rounded-md hover:bg-primary-dark transition-colors duration-300">
+        <buttonon
+          Click={() => router.push("/checkout")}
+          className="w-full bg-secondary text-white py-3 rounded-md hover:bg-primary-dark transition-colors duration-300"
+        >
           Proceed to Checkout
-        </button>
+        </buttonon>
       </div>
-      <RelatedProducts/>
+      <RelatedProducts />
     </div>
   );
 }
