@@ -26,7 +26,7 @@ const cartSlice = createSlice({
     removeFromCart(state, action) {
       const itemId = action.payload;
       const existingItem = state.items.find(
-        (item) => item.id === action.payload
+        (item) => item.id === action.payload // Should've been itemId
       );
       if (existingItem) {
         state.totalQuantity -= existingItem.quantity;
