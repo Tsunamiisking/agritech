@@ -5,7 +5,7 @@ import { auth, firestore } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import { updateProfile } from "firebase/auth";
 import Loading from "@/components/Loading";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, setDoc, doc } from "firebase/firestore";
 import { FcGoogle } from "react-icons/fc";
 
 const Page = () => {
@@ -63,12 +63,12 @@ const Page = () => {
       });
 
       // Add user to Firestore
-      const userDoc = await addDoc(collection(firestore, "Users"), {
+      await setDoc(doc(firestore, "Users", res.user.uid), {
         uid: res.user.uid,
         displayName: formData.username,
         email: formData.email,
         type: formData.role,
-      });
+      })
 
       //  console.log("User added to Firestore:", userDoc.id);
 
