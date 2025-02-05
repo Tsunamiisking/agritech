@@ -1,13 +1,10 @@
-import SideNav from "@/components/SideNav";
+import Layout from "@/components/Layout";
 import React from "react";
 
 function pages() {
   return (
-    <>
-      <SideNav />
-      <div className="lg:ml-64 md:ml-64">
-        profile & Settings
-        {/* todo
+   <Layout>
+    {/* todo
      
         •	Policies: Add return, refund, and shipping policies.
         •	Account Settings: Update personal  information.
@@ -15,8 +12,7 @@ function pages() {
         •	Access to FAQs and guides for troubleshooting.
         •	Contact support for technical or operational issues.
         •	Live chat or ticketing system for resolving disputes. */}
-      </div>
-    </>
+   </Layout>
   );
 }
 
