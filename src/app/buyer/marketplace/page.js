@@ -8,7 +8,13 @@ const Page = () => {
   return (
     <>
       <div className="flex px-5 lg:px-0">
-        <SideNav />
+      <SideNav
+        // option1={"Marketplace"}
+        option2={"Purchase History"}
+        option3={"Cart"}
+        option4={"Favorite"}
+        userType={"Buyer"}
+      />
         <Marketplace />
       </div>
     </>
