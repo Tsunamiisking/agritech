@@ -32,7 +32,6 @@ function CartItems() {
             <p>Actions</p>
           </div>
         )}
-
         {cart.items.length === 0 ? (
           <p className="text-gray-500 mt-4">Your cart is empty</p>
         ) : (
@@ -81,12 +80,12 @@ function CartItems() {
             Total Price: ${cart.totalPrice.toFixed(2)}
           </p>
         </div>
-        <buttonon
-          Click={() => router.push("/checkout")}
+        <button
+          onClick={() => router.push("/checkout")}
           className="w-full bg-secondary text-white py-3 rounded-md hover:bg-primary-dark transition-colors duration-300"
         >
           Proceed to Checkout
-        </buttonon>
+        </button>
       </div>
       <RelatedProducts />
     </div>
