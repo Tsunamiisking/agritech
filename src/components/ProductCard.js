@@ -89,6 +89,7 @@ function ProductCard({ product, closeModal, filteredProducts }) {
         {/* Related Products Section */}
         <RelatedProducts filteredProducts={filteredProducts} product={product} />
       </div>
+
     </div>
   );
 }

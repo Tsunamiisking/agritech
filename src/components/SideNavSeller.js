@@ -9,12 +9,21 @@ import { GrLogout } from "react-icons/gr";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
-import NavItem from "./NavItem" 
+import NavItem from "./NavItem";
+import { auth } from "@/app/firebase/config";
+import { useSignOut } from "react-firebase-hooks/auth";
 
-function SideNav({ userType, option1, option2, option3, option4 }) {
+function SideNavSeller({
+  username = "User",
+  userType = "Sellar",
+}) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const [signOut] = useSignOut(auth);
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
+
+  const handleOverlayClick = () => {
+    if (isMobileMenuOpen) setMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -28,7 +37,7 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
             alt="profile-picture"
             className="rounded-circle bg-secondary"
           />
-          <h3 className="font-extrabold">AllenDouglas</h3>
+          <h3 className="font-extrabold">{username}</h3>
           <h4 className="bg-secondary py-1 px-6 rounded-lg font-semibold">
             {userType}
           </h4>
@@ -37,31 +46,31 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
           <nav className="flex flex-col space-y-3 text-white rounded-br-xl">
             <NavItem href={"buyer/marketplace"}>
               <span className="flex items-center">
-                <CiShop /> {option1}
+                <CiShop /> Dashboard
+              </span>
+            </NavItem>
+            <NavItem href={"/seller/productmanagement"}>
+              <span className="flex items-center">
+                <RiFileList3Line /> Product Management
+              </span>
+            </NavItem>
+            <NavItem href={"/seller/ordermanagement"}>
+              <span className="flex items-center">
+                <CiShoppingCart /> Order Managment
+              </span>
+            </NavItem>
+            <NavItem href={"/sellar/analytics"}>
+              <span className="flex items-center">
+                <AiOutlineHeart /> Analytics
+              </span>
+            </NavItem>
+            <NavItem href={"/sellar/paymentmanagement"}>
+              <span className="flex items-center">
+                <IoSettingsOutline /> Payment Managment
               </span>
             </NavItem>
             <NavItem href={"/"}>
-              <span className="flex items-center">
-                <RiFileList3Line /> {option2}
-              </span>
-            </NavItem>
-            <NavItem href={"/"}>
-              <span className="flex items-center">
-                <CiShoppingCart /> {option3}
-              </span>
-            </NavItem>
-            <NavItem href={"buyer"}>
-              <span className="flex items-center">
-                <AiOutlineHeart /> {option4}
-              </span>
-            </NavItem>
-            <NavItem href={"/"}>
-              <span className="flex items-center">
-                <IoSettingsOutline /> Settings
-              </span>
-            </NavItem>
-            <NavItem href={"/"}>
-              <span className="flex items-center">
+              <span onClick={signOut} className="flex items-center">
                 <GrLogout /> Logout
               </span>
             </NavItem>
@@ -81,6 +90,13 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
           )}
         </button>
 
+        {isMobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-30"
+            onClick={handleOverlayClick}
+          />
+        )}
+
         <div
           className={`fixed top-0 left-0 h-full w-64 bg-primary shadow-lg transform ${
             isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -94,40 +110,40 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
               alt="profile-picture"
               className="rounded-circle bg-secondary"
             />
-            <h3 className="font-extrabold text-white">AllenDouglas</h3>
+            <h3 className="font-extrabold text-white">{username}</h3>
             <h4 className="bg-secondary py-1 px-6 rounded-lg font-semibold">
               {userType}
             </h4>
           </div>
           <div className="bg-secondary h-full flex justify-center py-20">
             <nav className="flex flex-col space-y-3 text-white">
-              <NavItem href={"marketplace"}>
+              <NavItem href={"/buyer/dashboard"}>
                 <span className="flex items-center">
-                  <CiShop /> {option1}
+                  <CiShop /> Dashboard
+                </span>
+              </NavItem>
+              <NavItem href={"/seller/productmanagement"}>
+                <span className="flex items-center">
+                  <RiFileList3Line /> Product Management
+                </span>
+              </NavItem>
+              <NavItem href={"/seller/ordermanagement"}>
+                <span className="flex items-center">
+                  <CiShoppingCart /> Order Management
+                </span>
+              </NavItem>
+              <NavItem href={"/sellar/paymentmanagement"}>
+                <span className="flex items-center">
+                  <AiOutlineHeart /> Payment Management
+                </span>
+              </NavItem>
+              <NavItem href={"/sellar/analytics"}>
+                <span className="flex items-center">
+                  <IoSettingsOutline /> Analytics
                 </span>
               </NavItem>
               <NavItem href={"/"}>
-                <span className="flex items-center">
-                  <RiFileList3Line /> {option2}
-                </span>
-              </NavItem>
-              <NavItem href={"/"}>
-                <span className="flex items-center">
-                  <CiShoppingCart /> {option3}
-                </span>
-              </NavItem>
-              <NavItem href={"/favorite"}>
-                <span className="flex items-center">
-                  <AiOutlineHeart /> {option4}
-                </span>
-              </NavItem>
-              <NavItem href={"/"}>
-                <span className="flex items-center">
-                  <IoSettingsOutline /> Settings
-                </span>
-              </NavItem>
-              <NavItem href={"/"}>
-                <span className="flex items-center">
+                <span onClick={signOut} className="flex items-center">
                   <GrLogout /> Logout
                 </span>
               </NavItem>
@@ -139,5 +155,4 @@ function SideNav({ userType, option1, option2, option3, option4 }) {
   );
 }
 
-export default SideNav;
-
+export default SideNavSeller;
