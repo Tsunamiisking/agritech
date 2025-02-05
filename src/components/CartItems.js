@@ -70,18 +70,18 @@ function CartItems() {
       {/* Checkout Section */}
       <div className="lg:w-72 lg:h-screen w-screen bg-primary fixed bottom-0 lg:right-0 lg:top-0 p-6 flex flex-col justify-between">
         <div>
-          <h4 className="text-center text-lg font-semibold mb-4">
+          <h4 className="text-center text-lg font-semibold mb-4 ">
             Cart Summary
           </h4>
-          <p className="mb-2 text-sm text-gray-700">
+          <p className="mb-2 text-sm text-white">
             Total Items: {cart.totalQuantity}
           </p>
-          <p className="mb-6 text-sm text-gray-700">
+          <p className="mb-6 text-sm text-white">
             Total Price: ${cart.totalPrice.toFixed(2)}
           </p>
         </div>
         <button
-          onClick={() => router.push("/checkout")}
+          onClick={() => router.push("checkout")}
           className="w-full bg-secondary text-white py-3 rounded-md hover:bg-primary-dark transition-colors duration-300"
         >
           Proceed to Checkout
