@@ -9,18 +9,29 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import favoriteReducer from "./favoriteSlice";
 import cartReducer from "./cartSlice";
 
-const persistConfig = {
+const favoritePersistConfig = {
+  key: "favorite",
+  storage,
+};
+const cartPersistConfig = {
   key: "cart",
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, cartReducer);
+const persistedCartReducer = persistReducer(cartPersistConfig, cartReducer);
+
+const persistedFavoritesReducer = persistReducer(
+  favoritePersistConfig,
+  favoriteReducer
+);
 
 const store = configureStore({
   reducer: {
-    cart: persistedReducer,
+    cart: persistedCartReducer,
+    favorites: persistedFavoritesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

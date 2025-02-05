@@ -7,7 +7,6 @@ import products from "../data/products";
 
 function Product() {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [favorites, setFavorites] = useState([]);
 
   const openModal = (product) => setSelectedProduct(product);
   const closeModal = () => setSelectedProduct(null);
@@ -16,15 +15,6 @@ function Product() {
     selectedProduct &&
     products.filter((product) => product.category === selectedProduct.category);
 
-  const toggleFavorite = (product) => {
-    const isFavorited = favorites.some((fav) => fav.id === product.id);
-    const updatedFavorites = isFavorited
-      ? favorites.filter((fav) => fav.id !== product.id)
-      : [...favorites, product];
-
-    setFavorites(updatedFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Save to localStorage
-  };
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-4">
@@ -55,9 +45,6 @@ function Product() {
           product={selectedProduct}
           closeModal={closeModal}
           filteredProducts={filteredProducts}
-          favorites={favorites}
-          setFavorites={setFavorites}
-          toggleFavorite={toggleFavorite}
         />
       )}
     </div>
