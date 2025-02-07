@@ -15,7 +15,7 @@ import { useSignOut } from "react-firebase-hooks/auth";
 
 // function to help concat string and remove space for navigation
 function concatstring(texts) {
-  texts.toLowerCase().split(" ").join("")
+  return texts.toLowerCase().split(" ").join("");
 }
 function SideNav({ username, userType, option1, option2, option3, option4 }) {
   const [signOut] = useSignOut(auth);
