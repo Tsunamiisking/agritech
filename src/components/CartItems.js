@@ -82,7 +82,7 @@ function CartItems() {
         </div>
         <button
           onClick={() => router.push("checkout")}
-          className="w-full bg-secondary text-white py-3 rounded-md hover:bg-primary-dark transition-colors duration-300"
+          className="w-full bg-secondary text-white py-3 rounded-md hover:bg-green-400 transition-colors duration-300"
         >
           Proceed to Checkout
         </button>

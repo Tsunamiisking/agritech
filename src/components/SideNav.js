@@ -13,6 +13,9 @@ import NavItem from "./NavItem";
 import { auth } from "@/app/firebase/config";
 import { useSignOut } from "react-firebase-hooks/auth";
 
+function concatstring(texts) {
+  texts.toLowerCase().split(" ").join("")
+}
 function SideNav({ username, userType, option1, option2, option3, option4 }) {
   const [signOut] = useSignOut(auth);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,22 +39,22 @@ function SideNav({ username, userType, option1, option2, option3, option4 }) {
       </div>
       <div className="bg-secondary h-full flex justify-center py-20">
         <nav className="flex flex-col space-y-3 text-white">
-          <NavItem href={"marketplace"}>
+          <NavItem href={`${concatstring(option1)}`}>
             <span className="flex items-center">
               <CiShop /> {option1}
             </span>
           </NavItem>
-          <NavItem href={"/"}>
+          <NavItem href={`${concatstring(option2)}`}>
             <span className="flex items-center">
               <RiFileList3Line /> {option2}
             </span>
           </NavItem>
-          <NavItem href={"/buyer/cart"}>
+          <NavItem href={`${concatstring(option3)}`}>
             <span className="flex items-center">
               <CiShoppingCart /> {option3}
             </span>
           </NavItem>
-          <NavItem href={"/buyer/favorite"}>
+          <NavItem href={`${concatstring(option4)}`}>
             <span className="flex items-center">
               <AiOutlineHeart /> {option4}
             </span>
