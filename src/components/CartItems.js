@@ -73,6 +73,7 @@ function CartItems() {
           )}
         </div>
 
+
         {/* Checkout Section */}
         <div className="lg:w-72 lg:h-screen w-screen bg-primary fixed bottom-0 lg:right-0 lg:top-0 p-6 flex flex-col justify-between">
           <div>
@@ -94,6 +95,7 @@ function CartItems() {
           </button>
         </div>
         <RelatedProducts />
+
       </div>
     </div>
   );
