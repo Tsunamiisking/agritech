@@ -28,9 +28,9 @@ const Page = () => {
     <Layout>
       <SideNav
         option1={"Dashboard"}
-        option2={"Products"}
-        option3={"Orders"}
-        option4={"Settings"}
+        option2={"Product management"}
+        option3={"Order Management"}
+        option4={"Payment Management"}
         userType={"Seller"}
       />
       <SellersDashboard />

@@ -3,13 +3,20 @@ import SideNav from "@/components/SideNav";
 import UploadForm from "@/components/UploadForm";
 import ProductListing from "@/components/ProductListing"; // Ensure this is imported
 import React, { useState } from "react";
+import Layout from "@/components/Layout";
 
 function Page() {
   const [activeComponent, setActiveComponent] = useState("uploadForm"); // Default component
 
   return (
-    <>
-      <SideNav />
+    <Layout>
+      <SideNav
+        option1={"Dashboard"}
+        option2={"Product management"}
+        option3={"Order Management"}
+        option4={"Payment Management"}
+        userType={"Seller"}
+      />
       <div className="md:ml-64 lg:ml-64">
         <div>
 
@@ -42,7 +49,7 @@ function Page() {
           {activeComponent === "productListing" && <ProductListing />}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 
