@@ -22,6 +22,9 @@ function SideNav({ username, userType, option1, option2, option3, option4 }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
+  const handleOverlayClick = () => {
+    if (isMobileMenuOpen) setMobileMenuOpen(false);
+  };
 
   const SidebarContent = () => (
     <>
@@ -42,22 +45,24 @@ function SideNav({ username, userType, option1, option2, option3, option4 }) {
         <nav className="flex flex-col space-y-3 text-white">
           <NavItem href={`${concatstring(option1)}`}>
             <span className="flex items-center">
-              <CiShop /> {option1}
+              <CiShop /> MarketPlace
             </span>
           </NavItem>
+
           <NavItem href={`${concatstring(option2)}`}>
+
             <span className="flex items-center">
-              <RiFileList3Line /> {option2}
+              <RiFileList3Line /> Cart
             </span>
           </NavItem>
           <NavItem href={`${concatstring(option3)}`}>
             <span className="flex items-center">
-              <CiShoppingCart /> {option3}
+              <CiShoppingCart /> Purchase History
             </span>
           </NavItem>
           <NavItem href={`${concatstring(option4)}`}>
             <span className="flex items-center">
-              <AiOutlineHeart /> {option4}
+              <AiOutlineHeart /> Favorite
             </span>
           </NavItem>
           <NavItem href={"/buyer/settings"}>
@@ -88,8 +93,18 @@ function SideNav({ username, userType, option1, option2, option3, option4 }) {
           onClick={toggleMobileMenu}
           className="fixed top-1 left-1 bg-primary text-white p-3 rounded-full shadow-lg z-50"
         >
-          {isMobileMenuOpen ? <MdClose size={24} /> : <HiOutlineMenuAlt3 size={24} />}
+          {isMobileMenuOpen ? (
+            <MdClose size={24} />
+          ) : (
+            <HiOutlineMenuAlt3 size={24} />
+          )}
         </button>
+        {isMobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-30"
+            onClick={handleOverlayClick}
+          />
+        )}
 
         <div
           className={`fixed top-0 left-0 h-full w-64 bg-primary shadow-lg transform ${
