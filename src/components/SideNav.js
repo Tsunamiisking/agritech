@@ -13,6 +13,7 @@ import NavItem from "./NavItem";
 import { auth } from "@/app/firebase/config";
 import { useSignOut } from "react-firebase-hooks/auth";
 
+// function to help concat string and remove space for navigation
 function concatstring(texts) {
   texts.toLowerCase().split(" ").join("")
 }
