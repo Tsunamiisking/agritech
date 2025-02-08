@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import NavItem from "./NavItem";
 import { useRouter } from "next/navigation";
 
@@ -51,7 +50,7 @@ const Header = () => {
           <NavItem href={"/dashboard"}>Home</NavItem>
           <NavItem href={"/favorite"}>About</NavItem>
           <NavItem href="/">Contact</NavItem>
-          <NavItem href={"/marketplace"}>Get-started</NavItem>
+          <NavItem onClick={() => router.push("/login")}>Get-started</NavItem>
         </nav>
       </section>
 

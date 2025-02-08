@@ -1,13 +1,12 @@
-import SideNav from "@/components/SideNav";
+import Layout from "@/components/Layout";
+import Checkout from "@/components/Checkout";
 import React from "react";
 
 function page() {
   return (
-    <>
-      <SideNav />
-      <div className="lg:ml-64 md:ml-64">Checkout</div>
-    </>
-  );
+    <Layout>
+      <Checkout/>
+    </Layout>  );
 }
 
 export default page;
