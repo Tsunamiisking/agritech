@@ -1,67 +1,80 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/config";
+import { auth, firestore } from "../firebase/config";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { doc, getDoc } from "firebase/firestore";
 import Loading from "@/components/Loading";
 
 const Page = () => {
-  // State variables for form inputs
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [SignInWithEmailAndPassword, user, loading] =
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const router = useRouter();
-
-  const [error, setError] = useState("");
+  const [role, setRole] = useState(null);
+  const [authError, setAuthError] = useState("");
   const [success, setSuccess] = useState("");
+  const [isClient, setIsClient] = useState(false); // NEW FIX ✅
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+    // Handle input changes
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
 
-  // Handle form submission
+  // Ensure this runs only on the client to prevent SSR mismatches
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!user?.user) return;
+
+    const fetchUserRole = async () => {
+      const userDoc = doc(firestore, "Users", user.user.uid);
+      const userSnap = await getDoc(userDoc);
+      if (userSnap.exists()) {
+        setRole(userSnap.data().type);
+      }
+    };
+
+    fetchUserRole();
+  }, [user]);
+
+  useEffect(() => {
+    if (!role) return;
+
+    if (role === "buyer") {
+      router.push("/buyer/marketplace");
+    } else if (role === "seller") {
+      router.push("/seller/dashboard");
+    }
+  }, [role, router]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simple validation example
     if (!formData.email || !formData.password) {
-      setError("All fields are required");
+      setAuthError("All fields are required");
       return;
     }
 
-    // Additional sign-in logic here
+    setAuthError("");
+    setSuccess("");
 
-    try {
-      // Clear previous messages
-      setError("");
-      setSuccess("");
+    const res = await signInWithEmailAndPassword(
+      formData.email,
+      formData.password
+    );
 
-      const res = await SignInWithEmailAndPassword(
-        formData.email,
-        formData.password
-      );
-
-      // Clear form inputs
-      formData.email = "";
-      formData.password = "";
-
-      if (res.user) {
-        router.push("/buyer/marketplace");
-        // Success message
-        setSuccess("Successfully signed in!");
-      }
-    } catch (e) {
+    if (res?.user) {
+      setSuccess("Successfully signed in!");
+    } else if (error) {
       let customMessage;
-      switch (e.code) {
+      switch (error.code) {
         case "auth/user-not-found":
           customMessage = "No account found with this email. Please sign up.";
           break;
@@ -71,13 +84,16 @@ const Page = () => {
         default:
           customMessage = "Something went wrong. Please try again later.";
       }
-      setError(customMessage);
+      setAuthError(customMessage);
     }
   };
 
   if (loading) {
     return <Loading />;
   }
+
+  // Prevent hydration errors by delaying rendering until useEffect runs
+  if (!isClient) return null; // NEW FIX ✅
 
   const img = {
     backgroundImage: `url('/images/open-farm.jpg')`,
@@ -90,22 +106,19 @@ const Page = () => {
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="grid md:grid-cols-2 lg:grid-cols-2 w-full max-w-5xl px-8">
         <div
-          className="hidden md:flex lg:flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md "
+          className="hidden md:flex lg:flex flex-col align-middle justify-center rounded-l-lg w-full bg-cover bg-center min-h-[30rem] shadow-md"
           style={img}
         >
-          <div>
-            <h2 className="text-white text-3xl font-bold text-center mb-2">
-              Welcome Back!
-            </h2>
-          </div>
+          <h2 className="text-white text-3xl font-bold text-center mb-2">
+            Welcome Back!
+          </h2>
         </div>
+
         <div className="bg-white rounded-r-lg shadow-md p-8 flex items-center justify-center min-h-[30rem]">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Display error or success messages */}
-            {error && <p className="text-red-500 text-center">{error}</p>}
+            {authError && <p className="text-red-500 text-center">{authError}</p>}
             {success && <p className="text-green-500 text-center">{success}</p>}
 
-            {/* Email input */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Email
@@ -120,7 +133,6 @@ const Page = () => {
               />
             </div>
 
-            {/* Password input */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Password
@@ -135,17 +147,16 @@ const Page = () => {
               />
             </div>
 
-            {/* Submit button */}
             <button
               type="submit"
               className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-secondary focus:outline-none focus:bg-green-400 transition duration-300"
             >
               Sign in
             </button>
+
             <p className="text-center text-sm pt-2">
-              {" "}
               Forgot your password?
-              <a className="text-green-600"> Reset Password. </a>{" "}
+              <a className="text-green-600"> Reset Password. </a>
             </p>
             <div className="text-center">
               <hr />

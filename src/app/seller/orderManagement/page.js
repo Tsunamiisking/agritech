@@ -3,8 +3,22 @@ import SideNavSeller from "@/components/SideNavSeller";
 import InventoryItem from "@/components/InventoryItem";
 import Layout from "@/components/Layout";
 import SideNav from "@/components/SideNav";
-
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 function page() {
+  const router = useRouter();
+  const { user, loading: authLoading } = useAuthState();
+  const { role, loading: roleLoading } = useUserRole(user?.uid);
+
+  useEffect(() => {
+      if (role === "buyer") 
+        router.push("/buyer/marketplace");
+  }, [authLoading, roleLoading, role, router]);
+
+  if (authLoading || roleLoading) {
+    return <Loading />;
+  }
+
   return (
     <Layout>
       <SideNav
