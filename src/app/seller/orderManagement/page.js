@@ -1,5 +1,6 @@
+"use client"
 import React from "react";
-import SideNavSeller from "@/components/SideNavSeller";
+import Loading from "@/components/Loading";
 import InventoryItem from "@/components/InventoryItem";
 import Layout from "@/components/Layout";
 import SideNav from "@/components/SideNav";
