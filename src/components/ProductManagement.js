@@ -1,6 +1,14 @@
-import React from "react";
+"use client";
+import React, {useState} from "react";
+import UploadForm from "@/components/UploadForm";
+import ProductListing from "@/components/ProductListing";
+import Loading from "./Loading";
 
 function ProductManagement() {
+  const [activeComponent, setActiveComponent] = useState("uploadForm");
+  if (authLoading || roleLoading) {
+    return <Loading />;
+  }
   return (
     <div className="md:ml-64 lg:ml-64">
       <div>
