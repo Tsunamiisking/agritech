@@ -6,7 +6,7 @@ import Layout from "@/components/Layout";
 import SideNav from "@/components/SideNav";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-function page() {
+function Page() {
   const router = useRouter();
   const { user, loading: authLoading } = useAuthState();
   const { role, loading: roleLoading } = useUserRole(user?.uid);
@@ -42,4 +42,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
