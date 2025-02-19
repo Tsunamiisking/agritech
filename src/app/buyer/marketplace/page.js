@@ -17,5 +17,3 @@ export default function ProtectedMarketPlace() {
     <ProtectedRoute>
       <Page />
     </ProtectedRoute>
-  );
-}
