@@ -65,7 +65,7 @@ function SideNav({ username, userType, option1, option2, option3, option4 }) {
               <AiOutlineHeart /> Favorite
             </span>
           </NavItem>
-          <NavItem href={"/buyer/settings"}>
+          <NavItem href={"/buyer/setting"}>
             <span className="flex items-center">
               <IoSettingsOutline /> Settings
             </span>
