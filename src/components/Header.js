@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import NavItem from "./NavItem";
 import { useRouter } from "next/navigation";
 
@@ -22,6 +21,7 @@ const Header = () => {
             alt="header logo"
             width={150}
             height={300}
+            priority
           />
         </div>
 
@@ -51,17 +51,18 @@ const Header = () => {
           <NavItem href={"/dashboard"}>Home</NavItem>
           <NavItem href={"/favorite"}>About</NavItem>
           <NavItem href="/">Contact</NavItem>
-          <NavItem href={"/marketplace"}>Get-started</NavItem>
+          <button onClick={() => router.push("/login")}>Get-started</button>
         </nav>
       </section>
 
       {/* Mobile Menu */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <nav className="flex items-end flex-col mt-4 space-y-4 md:hidden">
-          <NavItem href="/">Home</NavItem>
-          <NavItem href="/">About</NavItem>
+          <NavItem href="/dashboard">Home</NavItem>
+          <NavItem href="/favorite">About</NavItem>
           <NavItem href="/">Contact</NavItem>
-          <NavItem href="/">Get-started</NavItem>
+          <NavItem href="/login">Get-started</NavItem>
         </nav>
       )}
     </header>

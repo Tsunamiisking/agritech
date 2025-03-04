@@ -1,9 +1,11 @@
 import Layout from "@/components/Layout";
+import UserProfile from "@/components/UserProfile";
 import React from "react";
 
 function pages() {
   return (
    <Layout>
+    <UserProfile/>
     {/* todo
      
         •	Policies: Add return, refund, and shipping policies.

@@ -2,7 +2,7 @@ import React from "react";
 
 function InventoryItem() {
   return (
-    <div>
+    <div className="">
       <h2>Item Present in Inventory</h2>
       <p>
         Define table structure and retrive data from uploaded form and and

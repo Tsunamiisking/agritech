@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ProtectedRoute from "@/components/ProtectedRoutes";
-import SideNavSeller from "@/components/SideNavSeller";
+
 import Loading from "@/components/Loading";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
